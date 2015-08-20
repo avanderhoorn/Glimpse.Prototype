@@ -5,7 +5,7 @@ using Microsoft.AspNet.Builder;
 using Microsoft.Framework.DependencyInjection;
 using Microsoft.Framework.Notification;
 
-namespace Glimpse.AgentServer.Mvc.Sample
+namespace Glimpse.FunctionalTest.Website
 {
     public class Startup
     {
@@ -23,13 +23,14 @@ namespace Glimpse.AgentServer.Mvc.Sample
 
         public void Configure(IApplicationBuilder app)
         {
-            app.ApplicationServices.GetRequiredService<INotifier>().EnlistTarget(app.ApplicationServices.GetRequiredService<MvcNotificationListener>());
-            
+            var notifier = app.ApplicationServices.GetRequiredService<INotifier>();
+            notifier.EnlistTarget(app.ApplicationServices.GetRequiredService<MvcNotificationListener>());
+
             app.UseGlimpseServer();
             app.UseGlimpseAgent();
             app.UseGlimpseUI();
-            
+
             app.UseMvcWithDefaultRoute();
-;        }
+        }
     }
 }
