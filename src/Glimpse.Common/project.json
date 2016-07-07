@@ -11,29 +11,28 @@
   "summary": "Glimpse.Common contains common Glimpse interfaces and components, and is not intended for direct consumption.",
   "releaseNotes": "Initial release of Glimpse.Common.",
   "tags": [ "ASP.NET", "Web", "Debugging", "Diagnostics" ],
-
+  "compilationOptions": {
+    "define": ["DNX"]
+  },
   "dependencies": {
-    "Microsoft.AspNet.Http.Abstractions": "1.0.0-rc1-final",
-    "Microsoft.Extensions.DependencyInjection": "1.0.0-rc1-final",
-    "Microsoft.Extensions.Logging": "1.0.0-rc1-final",
-    "Microsoft.Extensions.OptionsModel": "1.0.0-rc1-final",
-    "Microsoft.Extensions.PlatformAbstractions": "1.0.0-rc1-final",
+    "Microsoft.AspNet.Http.Abstractions": "1.0.0-*",
+    "Microsoft.Extensions.DependencyInjection": "1.0.0-*",
+    "Microsoft.Extensions.Logging": "1.0.0-*",
+    "Microsoft.Extensions.OptionsModel": "1.0.0-*",
+    "Microsoft.Extensions.PlatformAbstractions": "1.0.0-*",
     "Newtonsoft.Json": "6.0.6",
     "Rx-Linq": "2.2.5",
     "Rx-PlatformServices": "2.2.5"
   },
   "frameworks": {
-    "net451": {
-      "dependencies": {
-      }
-    },
+    "net451": { },
     "dotnet5.4": {
       "dependencies": {
-        "System.ObjectModel": "4.0.11-beta-23516",
-        "System.Runtime": "4.0.21-beta-23516",
-        "System.Security.Cryptography.Algorithms": "4.0.0-beta-23516",
-        "System.Text.RegularExpressions": "4.0.11-beta-23516",
-        "System.Threading": "4.0.11-beta-23516"
+        "System.ObjectModel": "4.0.11-*",
+        "System.Runtime": "4.0.21-*",
+        "System.Security.Cryptography.Algorithms": "4.0.0-*",
+        "System.Text.RegularExpressions": "4.0.11-*",
+        "System.Threading": "4.0.11-*"
       }
     }
   }

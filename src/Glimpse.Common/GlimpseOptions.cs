@@ -1,9 +1,6 @@
-﻿using System;
-
-namespace Glimpse
+﻿namespace Glimpse
 {
     public class GlimpseOptions
     {
-
     }
 }

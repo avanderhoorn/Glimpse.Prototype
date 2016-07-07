@@ -11,22 +11,18 @@
   "summary": "Glimpse.Server contains infrastructure and extensibility points for serving Glimpse data and content.",
   "releaseNotes": "Initial release of Glimpse.Server.",
   "tags": [ "ASP.NET", "Web", "Debugging", "Diagnostics", "Server" ],
-
+  "resource": "Internal/Resources/Embeded/**/*.*",
+  "compilationOptions": {
+    "define": [ "DNX" ]
+  },
   "dependencies": {
     "Glimpse.Common": "",
-    "Microsoft.AspNet.FileProviders.Embedded": "1.0.0-rc1-final",
-    "Microsoft.AspNet.StaticFiles": "1.0.0-rc1-final",
+    "Microsoft.AspNet.FileProviders.Embedded": "1.0.0-*",
+    "Microsoft.AspNet.StaticFiles": "1.0.0-*",
     "Tavis.UriTemplates": "0.6.6-beta2"
   },
-  "resource": "Internal/Resources/Embeded/**/*.*",
   "frameworks": {
-    "net451": {
-      "dependencies": {
-      }
-    },
-    "dotnet5.4": {
-      "dependencies": {
-      }
-    }
+    "net451": { },
+    "dotnet5.4": { }
   }
 }

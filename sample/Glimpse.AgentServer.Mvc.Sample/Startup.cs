@@ -76,7 +76,6 @@ namespace Glimpse.AgentServer.AspNet.Mvc.Sample
         {
             app.UseGlimpse();
 
-            loggerFactory.MinimumLevel = LogLevel.Information;
             loggerFactory.AddConsole();
             loggerFactory.AddDebug();
 

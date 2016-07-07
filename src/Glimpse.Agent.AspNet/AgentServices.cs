@@ -1,22 +1,24 @@
 using System.IO;
-using Glimpse.Common.Initialization;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.OptionsModel;
 using Glimpse.Agent;
 using Glimpse.Agent.Internal.Messaging;
 using Glimpse.Agent.Configuration;
 using Glimpse.Agent.Inspectors;
+using Glimpse.Common.Initialization;
 using Glimpse.Initialization;
-using Microsoft.Extensions.OptionsModel;
 using System.Linq;
+#if DNX
 using Glimpse.Agent.Internal.Inspectors;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection.Extensions;
+#endif
 
 namespace Glimpse
 {
     public class AgentServices : IRegisterServices
     {
-        public void RegisterServices(GlimpseServiceCollectionBuilder services)
+        public void RegisterServices(IServiceCollection services)
         {
             services.AddOptions();
 
@@ -35,9 +37,11 @@ namespace Glimpse
             services.AddSingleton<IRequestIgnorerStatusCodeProvider, DefaultRequestIgnorerStatusCodeProvider>();
             services.AddSingleton<IRequestIgnorerContentTypeProvider, DefaultRequestIgnorerContentTypeProvider>();
             services.AddSingleton<IExtensionProvider<IRequestIgnorer>, DefaultExtensionProvider<IRequestIgnorer>>();
-            services.AddSingleton<IExtensionProvider<IInspectorFunction>, DefaultExtensionProvider<IInspectorFunction>>();
             services.AddSingleton<IExtensionProvider<IInspector>, DefaultExtensionProvider<IInspector>>();
             services.AddSingleton<IExtensionProvider<IAgentStartup>, DefaultExtensionProvider<IAgentStartup>>();
+#if DNX
+            services.AddSingleton<IExtensionProvider<IInspectorFunction>, DefaultExtensionProvider<IInspectorFunction>>();
+#endif
 
             //
             // Messages.
@@ -52,15 +56,21 @@ namespace Glimpse
             //
             services.AddTransient<IAgentStartupManager, DefaultAgentStartupManager>();
             services.AddTransient<IRequestIgnorerManager, DefaultRequestIgnorerManager>();
+#if DNX
             services.AddTransient<IInspectorFunctionManager, DefaultInspectorFunctionManager>();
+            // TODO: make work outside of DNX
             services.AddTransient<IExceptionProcessor, ExceptionProcessor>();
             services.AddTransient<WebDiagnosticsInspector>();
+#endif
 
-            if (!services.Any(s => s.ServiceType == typeof(IResourceOptionsProvider)))
+            // TODO: switch to tryadd 
+            if (!services.Any(s => s.ServiceType == typeof (IResourceOptionsProvider)))
+            {
                 services.AddSingleton<IResourceOptionsProvider, OptionsResourceOptionsProvider>();
+            }
         }
-
-        private void RegisterPublisher(GlimpseServiceCollectionBuilder services)
+        
+        private void RegisterPublisher(IServiceCollection services)
         {
             var configurationBuilder = new ConfigurationBuilder();
             var path = Path.Combine(configurationBuilder.GetBasePath(), "glimpse.json");

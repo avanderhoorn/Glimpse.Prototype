@@ -1,7 +1,9 @@
 ﻿using Glimpse.Internal.Extensions;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Glimpse.Server.Storage
@@ -11,46 +13,160 @@ namespace Glimpse.Server.Storage
         /// <summary>
         /// Internal class to contain all data associated with a single request. 
         /// </summary>
-        private class RequestInfo
+        private class RequestInfo : IDisposable
         {
-            public RequestInfo(LinkedListNode<Guid> lruNode)
-            {
-                this.RequestLRUNode = lruNode;
-                this.Messages = new LinkedList<IMessage>();
-                this.Indices = null;
-            }
+            /// <summary>
+            /// The list of IMessage instances associated with this request.
+            /// </summary>
+            private readonly LinkedList<IMessage> _messages;
 
             /// <summary>
-            /// List of individual messages associated with this request
+            /// The request indices for this request
             /// </summary>
-            public LinkedList<IMessage> Messages { get; private set; }
+            private RequestIndices _indices;
+
+            /// <summary>
+            /// The linked-list node in the LRU list.   
+            /// </summary>
+            private readonly LinkedListNode<Guid> _requestLRUNode;
+
+            /// <summary>
+            /// Lock object to control access to this specific request
+            /// </summary>
+            private readonly ReaderWriterLockSlim _requestLock;
+
+            /// <summary>
+            /// determines if this is disposed. 
+            /// </summary>
+            private bool _isDisposed = false;
 
             /// <summary>
             /// The node in the _activeRequests list.  Storing this here allows us to determine to track 
             /// requests by age in constant time.
             /// </summary>
-            public LinkedListNode<Guid> RequestLRUNode { get; private set; }
+            public LinkedListNode<Guid> RequestLRUNode { get { return _requestLRUNode; } }
+
 
             /// <summary>
             /// Indices associated with this Request
             /// </summary>
-            public RequestIndices Indices { get; set; }
+            public RequestIndices Indices
+            {
+                get
+                {
+                    return this.SynchronizedRead(() => { return this._indices; });
+                }
+            }
+
+
+            public RequestInfo(LinkedListNode<Guid> lruNode)
+            {
+                this._requestLRUNode = lruNode;
+                this._messages = new LinkedList<IMessage>();
+                this._indices = null;
+                this._requestLock = new ReaderWriterLockSlim();
+            }
+
 
             public void AddMessage(IMessage message)
             {
-                this.Messages.AddLast(message);
+                this.SynchronizedWrite(() =>
+                {
+                    this._messages.AddLast(message);
+                    if (IsRequestMessage(message))
+                    {
+                        if (this._indices == null)
+                        {
+                            this._indices = new RequestIndices(message);
+                        }
+                        else
+                        {
+                            this._indices = new RequestIndices(this._indices, message);
+                        }
+                    }
+                });
             }
 
-            public void AddOrUpdateIndices(IMessage message)
+            /// <summary>
+            /// Makes a copy of current messages associated with this request, and returns it as a read-only list. 
+            /// </summary>
+            public IEnumerable<IMessage> SnapshotMessages()
             {
-                if (this.Indices == null)
+                // TODO:  For efficiency, you can probably replace this to return a custom IEnumerator
+                // that is tolerant of the underlying messages being updated.  Since messages are only 
+                // ever appended, this should be easy/safe to do. 
+                return SynchronizedRead(() =>
                 {
-                    this.Indices = new RequestIndices(message);
-                }
-                else
+                    return new List<IMessage>(this._messages).AsReadOnly();
+                });
+            }
+
+            /// <summary>
+            /// Synchronously execute the given function inside the context of this request's read Lock
+            /// </summary>
+            /// <typeparam name="T">return type of the given function</typeparam>
+            /// <param name="f">function to execute inside the lock</param>
+            /// <returns>value returned from given function f</returns>
+            private T SynchronizedRead<T>(Func<T> f)
+            {
+                try
                 {
-                    this.Indices.Update(message);
+                    Debug.Assert(this._isDisposed == false, "Error!  Trying to Read a disposed RequestInfo.");
+                    this._requestLock.EnterReadLock();
+                    return f();
                 }
+                finally
+                {
+                    this._requestLock.ExitReadLock();
+                }
+            }
+
+            /// <summary>
+            /// Synchronously execute the given action inside the context of this request's write Lock
+            /// </summary>
+            /// <param name="a">action to execute</param>
+            private void SynchronizedWrite(Action a)
+            {
+                try
+                {
+                    Debug.Assert(this._isDisposed == false, "Error!  Trying to write a disposed RequestInfo.");
+                    this._requestLock.EnterWriteLock();
+                    a();
+                }
+                finally
+                {
+                    this._requestLock.ExitWriteLock();
+                }
+            }
+
+            protected virtual void Dispose(bool disposing)
+            {
+                if (!_isDisposed)
+                {
+                    if (disposing)
+                    {
+                        SynchronizedWrite(() =>
+                        {
+                            this._messages.Clear();
+                        });
+
+                        // assumption here is no other thread will be trying to read/write this RequestInfo after we've 
+                        // called dispose.
+                        Debug.Assert(this._requestLock.CurrentReadCount == 0, "Error!  CurrentReadCount is not zero for RequestInfo");
+                        Debug.Assert(this._requestLock.WaitingReadCount == 0, "Error!  WaitingReadCount is not zero for RequestInfo");
+                        Debug.Assert(this._requestLock.WaitingUpgradeCount == 0, "Error!  WaitingUpgradeCount is not zero for RequestInfo");
+                        Debug.Assert(this._requestLock.WaitingWriteCount == 0, "Error!  WaitingWriteCount is not zero for RequestInfo");
+                        this._requestLock.Dispose();
+
+                        _isDisposed = true;
+                    }
+                }
+            }
+
+            // This code added to correctly implement the disposable pattern.
+            public void Dispose()
+            {
+                Dispose(true);
             }
         }
 
@@ -73,12 +189,10 @@ namespace Glimpse.Server.Storage
         /// </summary>
         private readonly int _maxRequests;
 
-
         /// <summary>
         /// Lock to synchronize access to this data structure. 
         /// </summary>
-        // TODO:  Consider changing to a multi-reader/single-writer lock for increased read throughput
-        private readonly object _locker = new object();
+        private readonly ReaderWriterLockSlim _storageLock;
 
         /// <summary>
         /// Constructor.
@@ -88,6 +202,7 @@ namespace Glimpse.Server.Storage
         {
             _requestTable = new Dictionary<Guid, RequestInfo>();
             _requestLRUList = new LinkedList<Guid>();
+            _storageLock = new ReaderWriterLockSlim();
             _maxRequests = maxRequests;
         }
 
@@ -98,20 +213,14 @@ namespace Glimpse.Server.Storage
         public void Persist(IMessage message)
         {
             var requestId = message.Context.Id;
-
-            lock (_locker)
+            RequestInfo requestInfo = null;
+            this.SynchronizedWrite(() =>
             {
-                var requestInfo = GetOrCreateRequestInfo(requestId);
-
-                requestInfo.AddMessage(message);
-
-                if (IsRequestMessage(message))
-                {
-                    requestInfo.AddOrUpdateIndices(message);
-                }
-
+                requestInfo = GetOrCreateRequestInfo(requestId);
                 TriggerCleanup();
-            }
+            });
+
+            requestInfo.AddMessage(message);
         }
 
         /// <summary>
@@ -121,7 +230,7 @@ namespace Glimpse.Server.Storage
         /// <returns>RequestInfo isntance associated with the ID</returns>
         private RequestInfo GetOrCreateRequestInfo(Guid requestId)
         {
-            // TODO:  need to assert here that lock is correctly held
+            AssertWriteLockHeld();
             RequestInfo ri;
             if (!_requestTable.TryGetValue(requestId, out ri))
             {
@@ -133,31 +242,6 @@ namespace Glimpse.Server.Storage
             }
 
             return ri;
-        }
-        
-        /// <summary>
-        /// Add a new request to the structure
-        /// </summary>
-        /// <param name="requestId"></param>
-        /// <returns></returns>
-        private RequestInfo AddRequest(Guid requestId)
-        {
-            // TODO:  need to assert here that lock is correctly held
-            var llNode = _requestLRUList.AddFirst(requestId);
-            var ri = new RequestInfo(llNode);
-            _requestTable.Add(requestId, ri);
-            return ri;
-        }
-
-        /// <summary>
-        /// Update a requests position in the LRU list.
-        /// </summary>
-        /// <param name="requestInfo">RequestInfo instance of the request to update</param>
-        private void UpdateLRUList(RequestInfo requestInfo)
-        {
-            // move this request to the head of the "active list"
-            _requestLRUList.Remove(requestInfo.RequestLRUNode);
-            _requestLRUList.AddFirst(requestInfo.RequestLRUNode);
         }
 
         /// <summary>
@@ -175,6 +259,7 @@ namespace Glimpse.Server.Storage
         /// </summary>
         private void TriggerCleanup()
         {
+            AssertWriteLockHeld();
             if (_requestTable.Count > _maxRequests)
             {
                 var toRemove = Math.Max(_maxRequests / 10, 1);
@@ -190,18 +275,21 @@ namespace Glimpse.Server.Storage
         /// </summary>
         private void RemoveOldestRequest()
         {
+            AssertWriteLockHeld();
             LinkedListNode<Guid> r = _requestLRUList.Last;
             _requestLRUList.Remove(r);
+            var requestInfo = _requestTable[r.Value];
             _requestTable.Remove(r.Value);
+            requestInfo.Dispose();
         }
-        
+
         /// <summary>
         ///  Run a set of internal consistency checks.  
         /// </summary>
         /// <returns>True if all consistency checks pass, false otherwise.</returns>
         public bool CheckConsistency()
         {
-            lock (_locker)
+            return this.SynchronizedRead(() =>
             {
                 // verify every node in _activeRequests has a corresponding entry in _requestTable
                 var current = _requestLRUList.First;
@@ -221,11 +309,11 @@ namespace Glimpse.Server.Storage
                 }
 
                 // verify # of requests is within expected range
-                if (this._requestTable.Count < this._maxRequests) { return false; }
+                if (this._requestTable.Count > this._maxRequests) { return false; }
                 if (this._requestLRUList.Count != this._requestTable.Count) { return false; }
 
                 return true;
-            }
+            });
         }
 
         /// <summary>
@@ -234,7 +322,7 @@ namespace Glimpse.Server.Storage
         /// <returns>The current number of requests stored.</returns>
         public int GetRequestCount()
         {
-            return _requestTable.Count;
+            return this.SynchronizedRead(() => { return _requestTable.Count; });
         }
 
         public Task<IEnumerable<string>> RetrieveByType(params string[] types)
@@ -267,9 +355,21 @@ namespace Glimpse.Server.Storage
         /// <returns>Messages associated with request ID.</returns>
         public IEnumerable<IMessage> GetMessagesByRequestId(Guid id)
         {
-            if (_requestTable.ContainsKey(id))
+            RequestInfo requestInfo = this.SynchronizedRead(() =>
             {
-                return _requestTable[id].Messages;
+                if (this._requestTable.ContainsKey(id))
+                {
+                    return this._requestTable[id];
+                }
+                else
+                {
+                    return null;
+                }
+            });
+
+            if (requestInfo != null)
+            {
+                return requestInfo.SnapshotMessages();
             }
             else
             {
@@ -335,13 +435,16 @@ namespace Glimpse.Server.Storage
         /// <returns>All messages for all requests.</returns>
         private IEnumerable<IMessage> GetAllMessages()
         {
-            foreach (var requestInfo in this._requestTable.Values)
+            return this.SynchronizedRead(() =>
             {
-                foreach (IMessage msg in requestInfo.Messages)
+                var allMessages = new List<IMessage>();
+                foreach (var requestInfo in this._requestTable.Values)
                 {
-                    yield return msg;
+                    var snapshot = requestInfo.SnapshotMessages();
+                    allMessages.AddRange(snapshot);
                 }
-            }
+                return allMessages;
+            });
         }
 
         /// <summary>
@@ -350,10 +453,92 @@ namespace Glimpse.Server.Storage
         /// <returns>All indices for all requests.</returns>
         private IEnumerable<RequestIndices> GetAllIndices()
         {
-            return this._requestTable.Values.Select((ri) => ri.Indices);
+            return this.SynchronizedRead(() =>
+            {
+                var allIndices = new List<RequestIndices>();
+                foreach (var v in this._requestTable.Values)
+                {
+                    allIndices.Add(v.Indices);
+                }
+                return allIndices;
+            });
+        }
+
+        /// <summary>
+        /// Assert that the write lock is correctly held
+        /// </summary>
+        private void AssertWriteLockHeld()
+        {
+            Debug.Assert(_storageLock.IsWriteLockHeld, "expected write lock to be held, but it isn't. This is a potential race condition.");
+        }
+
+        /// <summary>
+        /// Synchronously execute the given action inside the context of this InMemoryStorage instance's write Lock
+        /// </summary>
+        /// <param name="a">Action toe execute inside the lock</param>
+        private void SynchronizedWrite(Action a)
+        {
+            try
+            {
+                this._storageLock.EnterWriteLock();
+                a();
+            }
+            finally
+            {
+                this._storageLock.ExitWriteLock();
+            }
+        }
+
+        /// <summary>
+        /// Synchronously execute the given function inside the context of this InMemoryStorage instance's read Lock
+        /// </summary>
+        /// <typeparam name="T">return type of the given function</typeparam>
+        /// <param name="f">function to execute inside the lock</param>
+        /// <returns>value returned from given function f</returns>
+        private T SynchronizedRead<T>(Func<T> f)
+        {
+            try
+            {
+                this._storageLock.EnterReadLock();
+                return f();
+            }
+            finally
+            {
+                this._storageLock.ExitReadLock();
+            }
+        }
+
+        /// <summary>
+        /// Add a new request to the structure
+        /// </summary>
+        /// <param name="requestId"></param>
+        /// <returns></returns>
+        private RequestInfo AddRequest(Guid requestId)
+        {
+            AssertWriteLockHeld();
+            var llNode = _requestLRUList.AddFirst(requestId);
+            var ri = new RequestInfo(llNode);
+            _requestTable.Add(requestId, ri);
+            return ri;
+        }
+
+        /// <summary>
+        /// Update a requests position in the LRU list.
+        /// </summary>
+        /// <param name="requestInfo">RequestInfo instance of the request to update</param>
+        private void UpdateLRUList(RequestInfo requestInfo)
+        {
+            // move this request to the head of the "active list"
+            AssertWriteLockHeld();
+            _requestLRUList.Remove(requestInfo.RequestLRUNode);
+            _requestLRUList.AddFirst(requestInfo.RequestLRUNode);
         }
     }
 
+    /// <summary>
+    /// Class that contains request indices.  For thread safety, this class is immutable after construction.  To update indices, create a new 
+    /// instance via the  constructor that takes an existing instance an IMessage.   
+    /// </summary>
     public class RequestIndices
     {
         private readonly List<string> _tags;
@@ -363,6 +548,24 @@ namespace Glimpse.Server.Storage
             Id = message.Context.Id;
             _tags = new List<string>();
 
+            ParseAndUpdateIndicesFor(message);
+        }
+
+        /// <summary>
+        /// Initialize properties from the passed in instance, and then update the properties based on values from the given IMessage.
+        /// </summary>
+        /// <param name="that"></param>
+        /// <param name="message"></param>
+        public RequestIndices(RequestIndices that, IMessage message)
+        {
+            this.Duration = that.Duration;
+            this.Url = that.Url;
+            this.Method = that.Method;
+            this.StatusCode = that.StatusCode;
+            this.Id = that.Id;
+            this.DateTime = that.DateTime;
+            this.UserId = that.UserId;
+            this._tags = new List<string>(that._tags);
             ParseAndUpdateIndicesFor(message);
         }
 
@@ -381,14 +584,6 @@ namespace Glimpse.Server.Storage
         public string UserId { get; set; }
 
         public IEnumerable<string> Tags => _tags.Distinct();
-
-        public void Update(IMessage message)
-        {
-            if (message.Context.Id != Id)
-                throw new ArgumentException($"Input Request ID '{message.Context.Id}' does not match existing request ID '{Id}'.");
-
-            ParseAndUpdateIndicesFor(message);
-        }
 
         private void ParseAndUpdateIndicesFor(IMessage message)
         {
@@ -418,5 +613,4 @@ namespace Glimpse.Server.Storage
             }
         }
     }
-
 }

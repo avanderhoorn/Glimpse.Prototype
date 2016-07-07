@@ -7,7 +7,7 @@ namespace Glimpse.Agent.AspNet.Mvc.Razor
 {
     public class RazorServices : IRegisterServices
     {
-        public void RegisterServices(GlimpseServiceCollectionBuilder services)
+        public void RegisterServices(IServiceCollection services)
         {
             services.AddTransient<IMvcRazorHost, ScriptInjectorRazorHost>();
         }

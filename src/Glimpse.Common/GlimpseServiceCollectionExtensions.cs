@@ -9,18 +9,25 @@ namespace Glimpse
     {
         public static GlimpseServiceCollectionBuilder AddGlimpse(this IServiceCollection services)
         {
-            services.TryAdd(GlimpseServices.GetDefaultServices());
+            return services.AddGlimpse(true);
+        }
 
-            var extensionProvider = services.BuildServiceProvider().GetService<IExtensionProvider<IRegisterServices>>();
-
-            var glimpseServiceCollectionBuilder = new GlimpseServiceCollectionBuilder(services);
-
-            foreach (var registration in extensionProvider.Instances)
+        public static GlimpseServiceCollectionBuilder AddGlimpse(this IServiceCollection services, bool autoRegisterComponents)
+        {
+            // load in default services
+            services.TryAdd(CommonServices.GetDefaultServices());
+            
+            // run all other service registrations (i.e. agent and server)
+            if (autoRegisterComponents)
             {
-                registration.RegisterServices(glimpseServiceCollectionBuilder);
+                var extensionProvider = services.BuildServiceProvider().GetService<IExtensionProvider<IRegisterServices>>();
+                foreach (var registration in extensionProvider.Instances)
+                {
+                    registration.RegisterServices(services);
+                }
             }
 
-            return glimpseServiceCollectionBuilder;
+            return new GlimpseServiceCollectionBuilder(services);
         } 
     }
 }

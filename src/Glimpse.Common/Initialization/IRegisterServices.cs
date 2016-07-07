@@ -1,7 +1,9 @@
-﻿namespace Glimpse.Common.Initialization
+﻿using Microsoft.Extensions.DependencyInjection;
+
+namespace Glimpse.Common.Initialization
 {
     public interface IRegisterServices
     {
-        void RegisterServices(GlimpseServiceCollectionBuilder services);
+        void RegisterServices(IServiceCollection services);
     }
 }

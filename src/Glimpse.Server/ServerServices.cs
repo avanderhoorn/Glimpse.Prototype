@@ -14,7 +14,7 @@ namespace Glimpse
 {
     public class ServerServices : IRegisterServices
     {
-        public void RegisterServices(GlimpseServiceCollectionBuilder services)
+        public void RegisterServices(IServiceCollection services)
         {
             services.AddOptions();
 
@@ -36,18 +36,16 @@ namespace Glimpse
             services.AddSingleton<IAllowRemoteProvider, DefaultAllowRemoteProvider>();
             services.AddSingleton<IMetadataProvider, DefaultMetadataProvider>();
 
+            // TODO: switch to TryAdd
             if (!services.Any(s => s.ServiceType == typeof (IMessagePublisher)))
             {
                 services.AddSingleton<IMessagePublisher, InProcessPublisher>();
             }
 
-
+            // TODO: switch to TryAdd
             if (services.Any(s => s.ServiceType == typeof(IResourceOptionsProvider)))
             {
-                services.Replace(new ServiceDescriptor(
-                    typeof(IResourceOptionsProvider),
-                    typeof(DefaultResourceOptionsProvider),
-                    ServiceLifetime.Singleton));
+                services.Replace(new ServiceDescriptor(typeof(IResourceOptionsProvider), typeof(DefaultResourceOptionsProvider), ServiceLifetime.Singleton));
             }
             else
             {

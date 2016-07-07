@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -54,7 +55,6 @@ namespace Glimpse.FunctionalTest
 
             for (int i = 0; i < numThreads; i++)
             {
-                // ThreadPool.QueueUserWorkItem(callback);
                 var task = Task.Factory.StartNew(() =>
                 {
                     for (int j = 0; j < requestsPerThread; j++)
@@ -86,6 +86,82 @@ namespace Glimpse.FunctionalTest
 
                 Assert.Equal(true, storage.CheckConsistency());
             });
+        }
+        
+        /// <summary>
+        /// This test simulates simultaneous readers & writers of the same request.  It repros some specific exceptions
+        /// that occur when RequestInfo's Messages list is updated when calling GetMessagesByRequestId(...)
+        /// </summary>
+        /// <returns></returns>
+        [Fact]
+        public async Task TestMessageStoreSynchronization()
+        {
+            int numWriteThreads = 5;
+            int numReadThreads = 5;
+
+            var storage = new InMemoryStorage();
+            var tasks = new List<Task>();
+            var exceptions = new SimpleSyncrhonizedList<Exception>();
+
+            MessageContext context = new MessageContext() { Id = Guid.NewGuid(), Type = "request" };
+
+            for (int i = 0; i < numWriteThreads; i++)
+            {
+                var task = Task.Factory.StartNew(() =>
+                {
+                    Thread.Sleep(1000);
+                    for (int j = 0; j < 1000 && exceptions.Count == 0; j++)
+                    {
+                        try
+                        {
+                            storage.Persist(CreateBeginRequestMessage(context));
+                            storage.Persist(CreateEndRequestMessage(context));
+                        }
+                        catch (Exception e)
+                        {
+                            exceptions.SyncAdd(e);
+                        }
+                    }
+                });
+                tasks.Add(task);
+            }
+
+            for (int i = 0; i < numReadThreads; i++)
+            {
+                var task = Task.Factory.StartNew(() =>
+                {
+                    Thread.Sleep(1000);
+                    for (int j = 0; j < 10000 && exceptions.Count == 0; j++)
+                    {
+                        try
+                        {
+                            // this seems to trigger an exception on the ToArray() call if the underlying messages array for the request
+                            // is modified. 
+                            IEnumerable<string> payloads = storage.GetMessagesByRequestId(context.Id).Select(m => m.Payload).ToArray();
+
+                            foreach (string s in payloads)
+                            {
+                                // no-op, we just want something that's going to iterate through the payloads.  Assuming this won't get opimized away.
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            exceptions.SyncAdd(e);
+                        }
+                    }
+                });
+                tasks.Add(task);
+            }
+
+
+            await Task.WhenAll(tasks).ContinueWith((task) =>
+                {
+                    Assert.Equal(storage.GetRequestCount(), 1);
+
+                    Assert.Equal(true, storage.CheckConsistency());
+
+                    Assert.Equal(0, exceptions.Count);
+                });
         }
 
 
@@ -159,6 +235,22 @@ namespace Glimpse.FunctionalTest
             var types = new string[] { "end-request-message" };
 
             return CreateMessage(context, data, types, indices);
+        }
+        
+        /// <summary>
+        /// For some reason, SynchonizedCollection isn't available (.net version this project is targeting?). This is a quick & dirty alternative. 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        public class SimpleSyncrhonizedList<T> : List<T>
+        {
+            private object syncLock = new object();
+            public void SyncAdd(T t)
+            {
+                lock (syncLock)
+                {
+                    this.Add(t);
+                }
+            }
         }
     }
 }
