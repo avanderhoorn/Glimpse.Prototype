@@ -1,0 +1,62 @@
+﻿{
+  "version": "1.0.0-*",
+  "dependencies": {
+    "EntityFramework.Commands": "7.0.0-*",
+    "EntityFramework.MicrosoftSqlServer": "7.0.0-*",
+    "Glimpse.Agent.Dnx": "",
+    "Glimpse.Agent.Dnx.Mvc": "",
+    "Glimpse.Server.Dnx": "",
+    "Microsoft.AspNet.Hosting": "1.0.0-*",
+    "Microsoft.AspNet.Authentication.Cookies": "1.0.0-*",
+    "Microsoft.AspNet.Authentication.Facebook": "1.0.0-*",
+    "Microsoft.AspNet.Authentication.Google": "1.0.0-*",
+    "Microsoft.AspNet.Authentication.MicrosoftAccount": "1.0.0-*",
+    "Microsoft.AspNet.Authentication.Twitter": "1.0.0-*",
+    "Microsoft.AspNet.Diagnostics": "1.0.0-*",
+    "Microsoft.AspNet.Identity.EntityFramework": "3.0.0-*",
+    "Microsoft.AspNet.IISPlatformHandler": "1.0.0-*",
+    "Microsoft.AspNet.Mvc": "6.0.0-*",
+    "Microsoft.AspNet.Mvc.TagHelpers": "6.0.0-*",
+    "Microsoft.AspNet.Server.Kestrel": "1.0.0-*",
+    "Microsoft.AspNet.Server.WebListener": "1.0.0-*",
+    "Microsoft.AspNet.StaticFiles": "1.0.0-*",
+    "Microsoft.AspNet.Tooling.Razor": "1.0.0-*",
+    "Microsoft.Extensions.Configuration.Abstractions": "1.0.0-*",
+    "Microsoft.Extensions.Configuration.Json": "1.0.0-*",
+    "Microsoft.Extensions.Configuration.UserSecrets": "1.0.0-*",
+    "Microsoft.Extensions.Logging": "1.0.0-*",
+    "Microsoft.Extensions.Logging.Console": "1.0.0-*",
+    "Microsoft.Extensions.Logging.Debug": "1.0.0-*"
+  },
+  "frameworks": {
+    "dnx451": { },
+    "dnxcore50": { }
+  },
+  "exclude": [
+    "wwwroot/**/*.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "packExclude": [
+    "**.kproj",
+    "**.user",
+    "**.vspscc"
+  ],
+  "compilationOptions": {
+    "emitEntryPoint": true
+  },
+  "commands": {
+    "web": "Glimpse.AgentServer.Dnx.Mvc.Sample"
+  },
+  "publishExclude": [
+    "node_modules",
+    "bower_components",
+    "**.xproj",
+    "**.user",
+    "**.vspscc"
+  ],
+  "userSecretsId": "aspnet5-Glimpse.AgentServer.Dnx.Mvc.Sample-13d51bc5-beea-48f5-a33d-0b583120c537",
+  "scripts": {
+    "prepublish": [ "npm install", "bower install", "gulp clean", "gulp min" ]
+  }
+}

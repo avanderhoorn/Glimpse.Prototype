@@ -3,6 +3,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Builder;
+using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.TestHost;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
@@ -18,7 +19,8 @@ namespace Glimpse.FunctionalTest
         [Fact]
         public async Task SayHelloToMvc()
         {
-            var server = TestServer.Create(Configure, ConfigureServices);
+            var builder = new WebApplicationBuilder().Configure(Configure).ConfigureServices(ConfigureServices);
+            var server = new TestServer(builder);
             var client = server.CreateClient();
 
             var request = new HttpRequestMessage();
