@@ -1,0 +1,22 @@
+﻿{
+  "version": "2.0.0-*",
+  "authors": [ "nmolnar", "avanderhoorn" ],
+  "owners": [ "nmolnar", "avanderhoorn" ],
+  "title": "Glimpse Agent for ASP.NET",
+  "licenseUrl": "https://github.com/Glimpse/Glimpse.Prototype/blob/dev/LICENSE.txt",
+  "projectUrl": "http://getglimpse.com",
+  "iconUrl": "http://getglimpse.com/content/glimpse100.png",
+  "requireLicenseAcceptance": false,
+  "description": "The infrastructure and extensibility points required to enable Glimpse to gather diagnostics information from ASP.NET web applications.",
+  "summary": "Glimpse.Agent.AspNet contains infrastructure and extensibility points for gathering diagnostics information from ASP.NET web applications.",
+  "releaseNotes": "Initial release of Glimpse.Agent.AspNet.",
+  "tags": [ "ASP.NET", "Web", "Debugging", "Diagnostics", "Agent", "MVC", "EF", "EntityFramework" ],
+  "dependencies": {
+    "Glimpse.Agent.Core": "",
+    "Glimpse.Common.SystemWeb": "",
+    "SystemWebAdapter": ""
+  },
+  "frameworks": {
+    "net451": { }
+  }
+}

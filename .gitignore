@@ -233,5 +233,9 @@ $RECYCLE.BIN/
 *.msp
 
 project.lock.json
+_SystemWeb_project.lock.json
 .vs
 /src/Glimpse.*.Sample/wwwroot/lib/
+
+# Temp whilst we are prototyping SystemWebAdapter
+!wrap/**
