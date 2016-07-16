@@ -3,8 +3,8 @@
   "version": "1.0.0-*",
 
   "dependencies": {
-    "Glimpse.Agent.AspNet.Mvc": "",
-    "Glimpse.Server": "",
+    "Glimpse.Agent.Dnx.Mvc": "",
+    "Glimpse.Server.Core": "",
     "Microsoft.AspNet.Mvc":  "6.0.0-*",
     "Microsoft.AspNet.Server.IIS": "1.0.0-*",
     "Microsoft.AspNet.Server.WebListener": "1.0.0-*"

@@ -1,7 +1,0 @@
-{
-  "Data": {
-    "DefaultConnection": {
-      "ConnectionString": "Server=(localdb)\\mssqllocaldb;Database=aspnet5-Glimpse.AgentServer.AspNet.Mvc.Sample-13d51bc5-beea-48f5-a33d-0b583120c537;Trusted_Connection=True;MultipleActiveResultSets=true"
-    }
-  }
-}

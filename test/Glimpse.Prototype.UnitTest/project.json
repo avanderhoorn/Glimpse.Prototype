@@ -3,7 +3,7 @@
         "warningsAsErrors": "true"
     },
     "dependencies": {
-        "Glimpse.Server": "",
+        "Glimpse.Server.Core": "",
         "Microsoft.AspNet.TestHost": "1.0.0-*",
         "xunit.runner.aspnet": "2.0.0-aspnet-*"
     },
