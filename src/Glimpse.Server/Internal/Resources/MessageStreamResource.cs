@@ -8,7 +8,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Glimpse.Server.Internal.Extensions;
 using Glimpse.Server.Resources;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
 
 namespace Glimpse.Server.Internal.Resources

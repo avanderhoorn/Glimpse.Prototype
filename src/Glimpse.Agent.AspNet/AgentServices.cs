@@ -1,4 +1,3 @@
-using System.IO;
 using Glimpse.Common.Initialization;
 using Microsoft.Extensions.DependencyInjection;
 using Glimpse.Agent;

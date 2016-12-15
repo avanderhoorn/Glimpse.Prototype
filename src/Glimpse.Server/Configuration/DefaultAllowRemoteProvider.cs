@@ -1,4 +1,3 @@
-using Glimpse.Server;
 using Microsoft.Extensions.Options;
 
 namespace Glimpse.Server.Configuration

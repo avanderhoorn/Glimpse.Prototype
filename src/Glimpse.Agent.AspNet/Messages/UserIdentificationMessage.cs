@@ -1,6 +1,3 @@
-using Glimpse.Agent.Internal.Messaging;
-using Glimpse.Internal;
-
 namespace Glimpse.Agent.Messages
 {
     public class UserIdentificationMessage

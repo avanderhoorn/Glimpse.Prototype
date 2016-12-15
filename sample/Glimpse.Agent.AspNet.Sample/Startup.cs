@@ -1,6 +1,4 @@
 using System;
-using Glimpse.Agent;
-using Glimpse.Initialization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

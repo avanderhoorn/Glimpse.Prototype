@@ -8,14 +8,14 @@
   "description": "This package contains Razor helpers to inject Glimpse into web applications.",
   "dependencies": {
     "Glimpse.Agent.AspNet": "2.0.0-*",
-    "Microsoft.AspNetCore.Mvc.Razor.Host": "1.0.0",
-    "Microsoft.AspNetCore.Razor": "1.0.0"
+    "Microsoft.AspNetCore.Mvc.Razor.Host": "1.1.0",
+    "Microsoft.AspNetCore.Razor":  "1.1.0" 
   },
   "frameworks": {
     "net451": {
       "dependencies": {}
     },
-    "netstandard1.6": {
+    "netcoreapp1.1": {
       "dependencies": {}
     }
   },

@@ -1,5 +1,4 @@
-﻿using System;
-#if NET451
+﻿#if NET451
 using System.Runtime.Remoting.Messaging;
 using System.Runtime.Remoting;
 #else

@@ -5,7 +5,6 @@ using Glimpse.Server.Resources;
 using Glimpse.Server.Storage;
 using Glimpse.Server.Internal.Extensions;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Net.Http.Headers;
 
 namespace Glimpse.Server.Internal.Resources
 {

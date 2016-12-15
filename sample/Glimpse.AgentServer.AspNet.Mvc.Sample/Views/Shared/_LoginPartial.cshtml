@@ -1,7 +1,4 @@
-﻿@using Microsoft.AspNetCore.Identity
-@using Glimpse.AgentServer.AspNet.Mvc.Sample.Models
-
-@inject SignInManager<ApplicationUser> SignInManager
+﻿@inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
 @if (SignInManager.IsSignedIn(User))

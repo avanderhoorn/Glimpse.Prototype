@@ -1,7 +1,5 @@
 using System;
-using Glimpse.Agent;
 using Microsoft.AspNetCore.Builder;
-using Glimpse.Server;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Glimpse.AgentServer.AspNet.Sample

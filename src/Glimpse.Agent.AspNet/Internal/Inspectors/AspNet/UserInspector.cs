@@ -5,7 +5,6 @@ using Glimpse.Agent.Inspectors;
 using Glimpse.Agent.Messages;
 using Glimpse.Common;
 using Glimpse.Internal.Extensions;
-using Glimpse.Internal;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
 
