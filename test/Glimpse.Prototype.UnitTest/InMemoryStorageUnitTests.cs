@@ -73,32 +73,35 @@ namespace Glimpse.FunctionalTest
             }
 
 
-            await Task.WhenAll(tasks).ContinueWith((task) =>
+            await Task.WhenAll(tasks).ContinueWith(obj =>
             {
-                Assert.InRange(storage.GetRequestCount(), maxRequests - (maxRequests / 10), maxRequests + 1);
+              Assert.InRange(storage.GetRequestCount(), maxRequests - (maxRequests / 10), maxRequests + 1);
 
-                Assert.Equal(totalRequests, requestGuids.Count());
+              Assert.Equal(totalRequests, requestGuids.Count());
 
-                foreach (Guid g in requestGuids)
-                {
-                    Assert.Equal(true, storage.GetMessagesByRequestId(g).Count() == 0 || storage.GetMessagesByRequestId(g).Count() == 2);
-                }
+              foreach (Guid g in requestGuids)
+              {
+                Assert.Equal(true,
+                  !storage.GetMessagesByRequestId(g).Any() || storage.GetMessagesByRequestId(g).Count() == 2);
+              }
 
-                Assert.Equal(true, storage.CheckConsistency());
+              Assert.Equal(true, storage.CheckConsistency());
             });
         }
 
 
         private IMessage CreateMessage(MessageContext context, Dictionary<string, string> data, string[] types, IReadOnlyDictionary<string, object> indices)
         {
-            var message = new Message();
-            message.Id = Guid.NewGuid();
-            message.Ordinal = messageCount++;
-            message.Context = context;
-            message.Types = types;
-            message.Indices = indices;
+          var message = new Message
+          {
+            Id = Guid.NewGuid(),
+            Ordinal = messageCount++,
+            Context = context,
+            Types = types,
+            Indices = indices
+          };
 
-            var payload = new Dictionary<string, object>()
+          var payload = new Dictionary<string, object>()
                {
                     {"id", message.Id },
                     { "payload", data},

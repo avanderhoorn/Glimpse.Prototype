@@ -8,15 +8,15 @@
   "description": "The infrastructure and extensibility points required to enable Glimpse to serve data and content.",
   "dependencies": {
     "Glimpse.Common": "2.0.0-*",
-    "Microsoft.Extensions.FileProviders.Embedded": "1.0.0",
-    "Microsoft.AspNetCore.StaticFiles": "1.0.0",
+    "Microsoft.AspNetCore.StaticFiles": "1.1.0",
+    "Microsoft.Extensions.FileProviders.Embedded": "1.1.0",
     "Tavis.UriTemplates": "1.1.0"
   },
   "frameworks": {
     "net451": {
       "dependencies": {}
     },
-    "netstandard1.6": {
+    "netcoreapp1.1": {
       "dependencies": {}
     }
   },

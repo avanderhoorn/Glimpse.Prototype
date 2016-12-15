@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using Glimpse.Internal;
-using Newtonsoft.Json;
 
 namespace Glimpse
 {

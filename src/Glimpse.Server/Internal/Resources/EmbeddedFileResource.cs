@@ -6,7 +6,6 @@ using System.Reflection;
 using Glimpse.Server.Resources;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.FileProviders;
-using Microsoft.AspNetCore.StaticFiles;
 
 namespace Glimpse.Server.Internal.Resources
 {

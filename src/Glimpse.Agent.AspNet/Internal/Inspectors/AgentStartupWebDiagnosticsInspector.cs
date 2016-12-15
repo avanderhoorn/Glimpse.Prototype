@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using Glimpse.Agent;
 using Glimpse.Agent.Configuration;
 using Glimpse.Initialization;
 using Microsoft.Extensions.DependencyInjection;

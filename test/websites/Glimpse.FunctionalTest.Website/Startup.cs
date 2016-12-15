@@ -1,6 +1,3 @@
-using System.Diagnostics.Tracing;
-using Glimpse.Agent;
-using Glimpse.Server;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 

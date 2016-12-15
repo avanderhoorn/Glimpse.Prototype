@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Glimpse.Agent.Messages
+﻿namespace Glimpse.Agent.Messages
 {
     public class BindingData
     {

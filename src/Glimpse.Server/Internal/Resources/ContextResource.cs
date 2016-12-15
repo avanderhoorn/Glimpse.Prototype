@@ -2,8 +2,6 @@ using System.Linq;
 using Glimpse.Server.Resources;
 using Glimpse.Server.Internal.Extensions;
 using Glimpse.Server.Storage;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Net.Http.Headers;
 
 namespace Glimpse.Server.Internal.Resources
 {

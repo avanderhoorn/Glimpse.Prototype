@@ -1,6 +1,4 @@
-﻿using Glimpse.Initialization;
-
-namespace Glimpse.Initialization
+﻿namespace Glimpse.Initialization
 {
     public interface IAgentStartup
     {

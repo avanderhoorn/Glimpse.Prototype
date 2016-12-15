@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Linq;
 using Glimpse.Server.Internal;
 using Glimpse.Internal.Extensions;

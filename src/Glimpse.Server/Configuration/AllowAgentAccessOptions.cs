@@ -1,5 +1,4 @@
 using System;
-using Glimpse.Server;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 

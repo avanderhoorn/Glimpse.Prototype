@@ -1,6 +1,4 @@
-﻿using System.Collections;
-
-namespace Glimpse.Agent.AspNet.Messages
+﻿namespace Glimpse.Agent.AspNet.Messages
 {
     public class EnvironmentMessage
     {
