@@ -37,9 +37,9 @@ namespace MusicStore
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
-
             services.AddGlimpse();
+
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
 
             // Add EF services to the services container
             if (_platform.UseInMemoryStore)
@@ -50,7 +50,7 @@ namespace MusicStore
             else
             {
                 services.AddDbContext<MusicStoreContext>(options =>
-                    options.UseSqlServer(Configuration["Data.DefaultConnection.ConnectionString"]));
+                    options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
             }
 
             // Add Identity services to the services container
