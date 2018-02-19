@@ -1,17 +1,11 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web" ToolsVersion="15.0">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
-    <TargetFramework>netcoreapp1.0</TargetFramework>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
     <PreserveCompilationContext>true</PreserveCompilationContext>
     <AssemblyName>Glimpse.AgentServer.AspNet.Mvc.Sample</AssemblyName>
     <OutputType>Exe</OutputType>
     <UserSecretsId>aspnet-Glimpse.AgentServer.AspNet.Mvc.Sample-dbd166cf-e778-4976-a0f5-6c3de1011986</UserSecretsId>
-    <PackageTargetFallback Condition=" '$(TargetFramework)' == 'netcoreapp1.0' ">$(PackageTargetFallback);dotnet5.6;portable-net45+win8</PackageTargetFallback>
   </PropertyGroup>
-  <ItemGroup>
-    <Content Include="wwwroot\**\*;Views\**\*;Areas\**\Views;appsettings.json;web.config">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\Glimpse.Agent.AspNet.Mvc\Glimpse.Agent.AspNet.Mvc.csproj" />
     <ProjectReference Include="..\..\src\Glimpse.Server\Glimpse.Server.csproj" />
@@ -23,47 +17,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.NETCore.App" Version="1.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="1.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Diagnostics" Version="1.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="1.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="1.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.0.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Server.IISIntegration" Version="1.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="1.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.0.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="1.0.2" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design">
-      <Version>1.0.2</Version>
-      <PrivateAssets>All</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools">
-      <Version>1.0.0-preview4-final</Version>
-      <PrivateAssets>All</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="1.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="1.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="1.0.1" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="1.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="1.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="1.0.0" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design">
-      <Version>1.0.0-msbuild2-final</Version>
-      <PrivateAssets>All</PrivateAssets>
-    </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.1" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.2" PrivateAssets="All" />
   </ItemGroup>
   <ItemGroup>
-    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="1.0.0-msbuild2-final" />
-    <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="1.0.0-msbuild2-final" />
-    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0-msbuild2-final" />
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.1" />
+    <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" />
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.2" />
   </ItemGroup>
-  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-    <DefineConstants>$(DefineConstants);RELEASE</DefineConstants>
-  </PropertyGroup>
-  <Target Name="PrepublishScript" BeforeTargets="PrepareForPublish" Condition=" '$(IsCrossTargetingBuild)' != 'true' ">
-    <Exec Command="bower install" />
-    <Exec Command="dotnet bundle" />
-  </Target>
-  <Target Name="PostpublishScript" AfterTargets="Publish" Condition=" '$(IsCrossTargetingBuild)' != 'true' " />
 </Project>
