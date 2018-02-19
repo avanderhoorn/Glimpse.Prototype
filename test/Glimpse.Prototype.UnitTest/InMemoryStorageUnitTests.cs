@@ -81,10 +81,10 @@ namespace Glimpse.FunctionalTest
 
                 foreach (Guid g in requestGuids)
                 {
-                    Assert.Equal(true, storage.GetMessagesByRequestId(g).Count() == 0 || storage.GetMessagesByRequestId(g).Count() == 2);
+                    Assert.True(!storage.GetMessagesByRequestId(g).Any() || storage.GetMessagesByRequestId(g).Count() == 2);
                 }
 
-                Assert.Equal(true, storage.CheckConsistency());
+                Assert.True(storage.CheckConsistency());
             });
         }
 
