@@ -25,10 +25,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.Host" Version="1.1.6" />
-    <PackageReference Include="Microsoft.AspNetCore.Razor" Version="2.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Runtime" Version="2.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Razor.Language" Version="2.0.1" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <DefineConstants>$(DefineConstants);RELEASE</DefineConstants>
