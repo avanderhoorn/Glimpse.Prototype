@@ -6,14 +6,8 @@ using System.Threading.Tasks;
 
 namespace Glimpse.AgentServer.AspNet.Mvc.Sample.Models.ManageViewModels
 {
-    public class VerifyPhoneNumberViewModel
+    public class GenerateRecoveryCodesViewModel
     {
-        [Required]
-        public string Code { get; set; }
-
-        [Required]
-        [Phone]
-        [Display(Name = "Phone number")]
-        public string PhoneNumber { get; set; }
+        public string[] RecoveryCodes { get; set; }
     }
 }

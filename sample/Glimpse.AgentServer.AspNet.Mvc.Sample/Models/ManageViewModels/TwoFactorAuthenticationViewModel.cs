@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace Glimpse.AgentServer.AspNet.Mvc.Sample.Models.ManageViewModels
 {
-    public class AddPhoneNumberViewModel
+    public class TwoFactorAuthenticationViewModel
     {
-        [Required]
-        [Phone]
-        [Display(Name = "Phone number")]
-        public string PhoneNumber { get; set; }
+        public bool HasAuthenticator { get; set; }
+
+        public int RecoveryCodesLeft { get; set; }
+
+        public bool Is2faEnabled { get; set; }
     }
 }
