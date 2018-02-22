@@ -52,7 +52,13 @@ namespace Glimpse.Agent
         public void SendMessage(object payload)
         {
             // need to fetch context data here as we are about to start switching threads
-            var data = new AgentBrokerPayload(payload, _context.Value, Interlocked.Increment(ref _ordinal));
+            var data = new AgentBrokerPayload
+            {
+                Payload = payload,
+                Context = _context.Value,
+                Ordinal = Interlocked.Increment(ref _ordinal),
+                Offset = this.GetOffset() // TODO: this is a hack and i don't like it
+            };
             
             // non-blocking
             _publisherInternalSubject.OnNext(data);
@@ -67,7 +73,7 @@ namespace Glimpse.Agent
         private void PublishMessage(AgentBrokerPayload data)
         {
             var context = data.Context ?? ApplicationMessageContext;
-            var message = _messageConverter.ConvertMessage(data.Payload, context, data.Ordinal);
+            var message = _messageConverter.ConvertMessage(data.Payload, context, data.Ordinal, data.Offset);
 
             _messagePublisher.PublishMessage(message); // TODO: Hook into offThread
         }

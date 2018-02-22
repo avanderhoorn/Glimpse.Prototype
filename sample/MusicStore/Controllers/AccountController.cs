@@ -1,9 +1,9 @@
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -89,12 +89,11 @@ namespace MusicStore.Controllers
             }
 
             // Remove before production
-#if DEMO
             if (user != null)
             {
                 ViewBag.Code = await UserManager.GenerateTwoFactorTokenAsync(user, provider);
             }
-#endif
+
             return View(new VerifyCodeViewModel { Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe });
         }
 
@@ -163,13 +162,8 @@ namespace MusicStore.Controllers
                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
                     await MessageServices.SendEmailAsync(model.Email, "Confirm your account",
                         "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
-#if !DEMO
+
                     return RedirectToAction("Index", "Home");
-#else
-                    //To display the email link in a friendly page instead of sending email
-                    ViewBag.Link = callbackUrl;
-                    return View("DemoLinkDisplay");
-#endif
 
                 }
                 AddErrors(result);
@@ -227,13 +221,7 @@ namespace MusicStore.Controllers
                 var callbackUrl = Url.Action("ResetPassword", "Account", new { code = code }, protocol: HttpContext.Request.Scheme);
                 await MessageServices.SendEmailAsync(model.Email, "Reset Password",
                     "Please reset your password by clicking here: <a href=\"" + callbackUrl + "\">link</a>");
-#if !DEMO
                 return RedirectToAction("ForgotPasswordConfirmation");
-#else
-                //To display the email link in a friendly page instead of sending email
-                ViewBag.Link = callbackUrl;
-                return View("DemoLinkDisplay");
-#endif
             }
 
             ModelState.AddModelError("", string.Format("We could not locate an account with email : {0}", model.Email));
@@ -420,14 +408,13 @@ namespace MusicStore.Controllers
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user);
 
-#if TESTING
+                // NOTE: Used for end to end testing only
                 //Just for automated testing adding a claim named 'ManageStore' - Not required for production
                 var manageClaim = info.Principal.Claims.Where(c => c.Type == "ManageStore").FirstOrDefault();
                 if (manageClaim != null)
                 {
                     await UserManager.AddClaimAsync(user, manageClaim);
                 }
-#endif
 
                 if (result.Succeeded)
                 {

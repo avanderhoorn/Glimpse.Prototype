@@ -1,4 +1,3 @@
-using System.IO;
 using Glimpse.Common.Initialization;
 using Microsoft.Extensions.DependencyInjection;
 using Glimpse.Agent;
@@ -23,8 +22,10 @@ namespace Glimpse
             RegisterPublisher(services);
 
             //
-            // Broker
+            // Common
             //
+            services.AddMiddlewareAnalysis();
+            services.AddTransient<IGlimpseAgent, GlimpseAgent>();
             services.AddSingleton<IAgentBroker, DefaultAgentBroker>();
 
             //
@@ -40,7 +41,7 @@ namespace Glimpse
             services.AddSingleton<IExtensionProvider<IAgentStartup>, DefaultExtensionProvider<IAgentStartup>>();
 
             //
-            // Messages.
+            // Messages
             //
             services.AddSingleton<IMessageConverter, DefaultMessageConverter>();
             services.AddTransient<IMessagePayloadFormatter, DefaultMessagePayloadFormatter>();
@@ -54,7 +55,7 @@ namespace Glimpse
             services.AddTransient<IRequestIgnorerManager, DefaultRequestIgnorerManager>();
             services.AddTransient<IInspectorFunctionManager, DefaultInspectorFunctionManager>();
             services.AddTransient<IExceptionProcessor, ExceptionProcessor>();
-            services.AddTransient<WebDiagnosticsInspector>();
+            services.AddTransient<WebDiagnosticsListener>();
 
             if (!services.Any(s => s.ServiceType == typeof(IResourceOptionsProvider)))
                 services.AddSingleton<IResourceOptionsProvider, OptionsResourceOptionsProvider>();

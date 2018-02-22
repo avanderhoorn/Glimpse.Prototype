@@ -31,7 +31,9 @@ namespace Glimpse.Server.Configuration
             var resources = _resourceManager.RegisteredUris.ToDictionary(kvp => kvp.Key.KebabCase(), kvp => $"{baseUrl}{kvp.Key}/{kvp.Value}");
 
             if (_serverOptions.OverrideResources != null)
+            {
                 _serverOptions.OverrideResources(resources);
+            }
 
             _metadata = new Metadata(resources);
 

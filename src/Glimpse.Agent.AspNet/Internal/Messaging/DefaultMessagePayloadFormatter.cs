@@ -23,7 +23,7 @@ namespace Glimpse.Agent.Internal.Messaging
             var messageTypes = "[" + string.Join(",", message.Types.Select(s => "\"" + s + "\"")) + "]";
             var messageContext = $"{{\"id\":\"{message.Context.Id.ToString("N")}\",\"type\":\"{message.Context.Type}\"}}";
 
-            return $"{{\"id\":\"{message.Id.ToString("N")}\",\"ordinal\":{message.Ordinal},\"types\":{messageTypes},\"payload\":{content},\"context\":{messageContext}}}";
+            return $"{{\"id\":\"{message.Id.ToString("N")}\",\"ordinal\":{message.Ordinal},\"types\":{messageTypes},\"payload\":{content},\"context\":{messageContext},\"offset\":{message.Offset},\"agent\":{{\"source\":\"{message.Agent.Soruce}\"}}}}";
         }
 
         public virtual string SerializeCore(object payload)

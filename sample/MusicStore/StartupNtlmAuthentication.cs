@@ -1,8 +1,12 @@
 using System;
+using System.Globalization;
 using System.Security.Claims;
+using System.Security.Principal;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -91,9 +95,17 @@ namespace MusicStore
             });
         }
 
-        public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app)
         {
-            loggerFactory.AddConsole(minLevel: LogLevel.Warning);
+            // force the en-US culture, so that the app behaves the same even on machines with different default culture
+            var supportedCultures = new[] { new CultureInfo("en-US") };
+
+            app.UseRequestLocalization(new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture("en-US"),
+                SupportedCultures = supportedCultures,
+                SupportedUICultures = supportedCultures
+            });
 
             app.UseStatusCodePagesWithRedirects("~/Home/StatusCodePage");
 
@@ -109,8 +121,7 @@ namespace MusicStore
                 // administrator. But this can be changed to suit the needs.
                 var identity = (ClaimsIdentity)context.User.Identity;
 
-                if (context.User.Identity.Name == Environment.GetEnvironmentVariable("USERDOMAIN") + "\\"
-                    + Environment.GetEnvironmentVariable("USERNAME"))
+                if (context.User.Identity.Name == WindowsIdentity.GetCurrent().Name)
                 {
                     identity.AddClaim(new Claim("ManageStore", "Allowed"));
                 }

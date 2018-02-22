@@ -8,31 +8,31 @@ namespace Glimpse.Agent
     {
         public static void StartOffsetOperation(this IAgentBroker broker)
         {
-            var operations = new OperationStack();
-            operations.StartOffset();
+            OperationStack.StartOffset();
         }
         public static void StartOffsetOperation(this IAgentBroker broker, DateTime startTime)
         {
-            var operations = new OperationStack();
-            operations.StartOffset(startTime);
+            OperationStack.StartOffset(startTime);
+        }
+
+        public static TimeSpan GetOffset(this IAgentBroker broker)
+        {
+            return OperationStack.GetOffset();
         }
 
         public static void BeginLogicalOperation(this IAgentBroker broker, object message)
         {
-            var operations = new OperationStack();
-            operations.PushOperation(message);
+            OperationStack.PushOperation(message);
         }
 
         public static void BeginLogicalOperation(this IAgentBroker broker, object message, DateTime dateTime)
         {
-            var operations = new OperationStack();
-            operations.PushOperation(message, dateTime);
+            OperationStack.PushOperation(message, dateTime);
         }
 
         public static OperationTiming<T> EndLogicalOperation<T>(this IAgentBroker broker)
         {
-            var operations = new OperationStack();
-            var timing = operations.PopOperation<T>();
+            var timing = OperationStack.PopOperation<T>();
             return timing;
         }
     }

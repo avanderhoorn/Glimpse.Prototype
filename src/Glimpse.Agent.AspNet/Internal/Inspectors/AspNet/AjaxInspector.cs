@@ -7,7 +7,7 @@ using Glimpse.Common;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Primitives;
 
-namespace Glimpse.Agent.AspNet.Internal.Inspectors.AspNet
+namespace Glimpse.Agent.Internal.Inspectors
 {
     public class AjaxInspector : Inspector
     {

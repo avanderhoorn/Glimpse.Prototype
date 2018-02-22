@@ -17,6 +17,8 @@ runtimeconfig.template.json
 x64/
 x86/
 build/
+.build/
+artifacts/
 bld/
 [Bb]in/
 [Oo]bj/
