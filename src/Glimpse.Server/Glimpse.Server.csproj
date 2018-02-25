@@ -16,6 +16,64 @@
     <RepositoryUrl>https://github.com/Glimpse/Glimpse.Prototype</RepositoryUrl>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Internal\Resources\Embeded\Agent\agent\agent.js" />
+    <None Remove="Internal\Resources\Embeded\Client\client\assets\favicon.png" />
+    <None Remove="Internal\Resources\Embeded\Client\client\assets\logo-long-white.png" />
+    <None Remove="Internal\Resources\Embeded\Client\client\assets\selawk.woff" />
+    <None Remove="Internal\Resources\Embeded\Client\client\assets\selawk.woff2" />
+    <None Remove="Internal\Resources\Embeded\Client\client\assets\selawkl.woff" />
+    <None Remove="Internal\Resources\Embeded\Client\client\assets\selawkl.woff2" />
+    <None Remove="Internal\Resources\Embeded\Client\client\index.html" />
+    <None Remove="Internal\Resources\Embeded\Client\client\main.js" />
+    <None Remove="Internal\Resources\Embeded\Client\client\main.min.js" />
+    <None Remove="Internal\Resources\Embeded\Client\diagnostics\index.html" />
+    <None Remove="Internal\Resources\Embeded\Client\diagnostics\scripts\jquery\jquery-2.1.1.js" />
+    <None Remove="Internal\Resources\Embeded\Client\diagnostics\scripts\jquery\jquery-2.1.1.min.js" />
+    <None Remove="Internal\Resources\Embeded\Client\diagnostics\scripts\reactjs\JSXTransformer.js" />
+    <None Remove="Internal\Resources\Embeded\Client\diagnostics\scripts\reactjs\react-with-addons.js" />
+    <None Remove="Internal\Resources\Embeded\Client\diagnostics\scripts\reactjs\react-with-addons.min.js" />
+    <None Remove="Internal\Resources\Embeded\Client\diagnostics\scripts\reactjs\react.js" />
+    <None Remove="Internal\Resources\Embeded\Client\diagnostics\scripts\reactjs\react.min.js" />
+    <None Remove="Internal\Resources\Embeded\Client\diagnostics\scripts\signalr\jquery.signalR-2.2.0.js" />
+    <None Remove="Internal\Resources\Embeded\Client\diagnostics\scripts\signalr\jquery.signalR-2.2.0.min.js" />
+    <None Remove="Internal\Resources\Embeded\Client\hud\assets\glimpse-logo.png" />
+    <None Remove="Internal\Resources\Embeded\Client\hud\assets\selawk.woff" />
+    <None Remove="Internal\Resources\Embeded\Client\hud\assets\selawk.woff2" />
+    <None Remove="Internal\Resources\Embeded\Client\hud\assets\selawkl.woff" />
+    <None Remove="Internal\Resources\Embeded\Client\hud\assets\selawkl.woff2" />
+    <None Remove="Internal\Resources\Embeded\Client\hud\hud.js" />
+    <None Remove="Internal\Resources\Embeded\Client\hud\hud.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Internal\Resources\Embeded\Agent\agent\agent.js" />
+    <EmbeddedResource Include="Internal\Resources\Embeded\Client\client\assets\favicon.png" />
+    <EmbeddedResource Include="Internal\Resources\Embeded\Client\client\assets\logo-long-white.png" />
+    <EmbeddedResource Include="Internal\Resources\Embeded\Client\client\assets\selawk.woff" />
+    <EmbeddedResource Include="Internal\Resources\Embeded\Client\client\assets\selawk.woff2" />
+    <EmbeddedResource Include="Internal\Resources\Embeded\Client\client\assets\selawkl.woff" />
+    <EmbeddedResource Include="Internal\Resources\Embeded\Client\client\assets\selawkl.woff2" />
+    <EmbeddedResource Include="Internal\Resources\Embeded\Client\client\index.html" />
+    <EmbeddedResource Include="Internal\Resources\Embeded\Client\client\main.js" />
+    <EmbeddedResource Include="Internal\Resources\Embeded\Client\client\main.min.js" />
+    <EmbeddedResource Include="Internal\Resources\Embeded\Client\diagnostics\index.html" />
+    <EmbeddedResource Include="Internal\Resources\Embeded\Client\diagnostics\scripts\jquery\jquery-2.1.1.js" />
+    <EmbeddedResource Include="Internal\Resources\Embeded\Client\diagnostics\scripts\jquery\jquery-2.1.1.min.js" />
+    <EmbeddedResource Include="Internal\Resources\Embeded\Client\diagnostics\scripts\reactjs\JSXTransformer.js" />
+    <EmbeddedResource Include="Internal\Resources\Embeded\Client\diagnostics\scripts\reactjs\react-with-addons.js" />
+    <EmbeddedResource Include="Internal\Resources\Embeded\Client\diagnostics\scripts\reactjs\react-with-addons.min.js" />
+    <EmbeddedResource Include="Internal\Resources\Embeded\Client\diagnostics\scripts\reactjs\react.js" />
+    <EmbeddedResource Include="Internal\Resources\Embeded\Client\diagnostics\scripts\reactjs\react.min.js" />
+    <EmbeddedResource Include="Internal\Resources\Embeded\Client\diagnostics\scripts\signalr\jquery.signalR-2.2.0.js" />
+    <EmbeddedResource Include="Internal\Resources\Embeded\Client\diagnostics\scripts\signalr\jquery.signalR-2.2.0.min.js" />
+    <EmbeddedResource Include="Internal\Resources\Embeded\Client\hud\assets\glimpse-logo.png" />
+    <EmbeddedResource Include="Internal\Resources\Embeded\Client\hud\assets\selawk.woff" />
+    <EmbeddedResource Include="Internal\Resources\Embeded\Client\hud\assets\selawk.woff2" />
+    <EmbeddedResource Include="Internal\Resources\Embeded\Client\hud\assets\selawkl.woff" />
+    <EmbeddedResource Include="Internal\Resources\Embeded\Client\hud\assets\selawkl.woff2" />
+    <EmbeddedResource Include="Internal\Resources\Embeded\Client\hud\hud.js" />
+    <EmbeddedResource Include="Internal\Resources\Embeded\Client\hud\hud.min.js" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Glimpse.Common\Glimpse.Common.csproj" />
   </ItemGroup>
   <ItemGroup>
