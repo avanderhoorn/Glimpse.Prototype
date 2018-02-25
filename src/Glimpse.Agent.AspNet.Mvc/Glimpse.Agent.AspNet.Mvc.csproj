@@ -1,10 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <Description>This package contains Razor helpers to inject Glimpse into web applications.</Description>
     <AssemblyTitle>Glimpse Agent for ASP.NET MVC</AssemblyTitle>
     <VersionPrefix>2.0.0</VersionPrefix>
     <Authors>nmolnar;avanderhoorn</Authors>
-    <TargetFrameworks>net451;netstandard1.6</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <RuntimeIdentifiers>win7-x64;win7-x86;osx.10.10-x64;osx.10.11-x64;ubuntu.14.04-x64;ubuntu.16.04-x64;centos.7-x64;rhel.7.2-x64;debian.8-x64;fedora.23-x64;opensuse.13.2-x64</RuntimeIdentifiers>
     <PreserveCompilationContext>true</PreserveCompilationContext>
     <AssemblyName>Glimpse.Agent.AspNet.Mvc</AssemblyName>
@@ -17,8 +17,12 @@
     <EnableDefaultItems>false</EnableDefaultItems>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="**\*.cs" Exclude="bin\**;obj\**;" />
     <EmbeddedResource Include="**\*.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Razor\RazorServices.cs" />
+    <Compile Include="Razor\ScriptInjector.cs" />
+    <Compile Include="Razor\ScriptInjectorRazorHost.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Glimpse.Agent.AspNet\Glimpse.Agent.AspNet.csproj" />
@@ -27,13 +31,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="NETStandard.Library" Version="1.6.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.Host" Version="1.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Razor" Version="1.0.0" />
-  </ItemGroup>
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net451' ">
-    <Reference Include="System" />
-    <Reference Include="Microsoft.CSharp" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor" Version="2.0.1" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <DefineConstants>$(DefineConstants);RELEASE</DefineConstants>
