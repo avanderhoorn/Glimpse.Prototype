@@ -14,24 +14,15 @@
     <PackageLicenseUrl>https://github.com/Glimpse/Glimpse.Prototype/blob/dev/LICENSE.txt</PackageLicenseUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/Glimpse/Glimpse.Prototype</RepositoryUrl>
-    <EnableDefaultItems>false</EnableDefaultItems>
   </PropertyGroup>
   <ItemGroup>
-    <EmbeddedResource Include="**\*.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Razor\RazorServices.cs" />
-    <Compile Include="Razor\ScriptInjector.cs" />
-    <Compile Include="Razor\ScriptInjectorRazorHost.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Glimpse.Agent.AspNet\Glimpse.Agent.AspNet.csproj" />
-    <ProjectReference Include="..\Glimpse.Common\Glimpse.Common.csproj">
-      <FromP2P>true</FromP2P>
-    </ProjectReference>
+    <ProjectReference Include="..\Glimpse.Common\Glimpse.Common.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Razor" Version="2.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Language" Version="2.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Runtime" Version="2.0.1" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <DefineConstants>$(DefineConstants);RELEASE</DefineConstants>

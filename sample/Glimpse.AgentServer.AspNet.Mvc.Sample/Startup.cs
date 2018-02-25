@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using Glimpse.AgentServer.AspNet.Mvc.Sample.Data;
 using Glimpse.AgentServer.AspNet.Mvc.Sample.Models;
 using Glimpse.AgentServer.AspNet.Mvc.Sample.Services;
+using Microsoft.AspNetCore.Identity;
 
 namespace Glimpse.AgentServer.AspNet.Mvc.Sample
 {

@@ -14,12 +14,7 @@
     <PackageLicenseUrl>https://github.com/Glimpse/Glimpse.Prototype/blob/dev/LICENSE.txt</PackageLicenseUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/Glimpse/Glimpse.Prototype</RepositoryUrl>
-    <EnableDefaultItems>false</EnableDefaultItems>
   </PropertyGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="**\*.resx" />
-    <EmbeddedResource Include="Internal\Resources\Embeded\**\*.*" />
-  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Glimpse.Common\Glimpse.Common.csproj" />
   </ItemGroup>

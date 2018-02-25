@@ -1,7 +1,7 @@
-using Glimpse.Agent.Razor;
+//using Glimpse.Agent.Razor;
 using Glimpse.Common.Initialization;
-using Microsoft.AspNetCore.Mvc.Razor;
-using Microsoft.Extensions.DependencyInjection;
+//using Microsoft.AspNetCore.Mvc.Razor;
+//using Microsoft.Extensions.DependencyInjection;
 
 namespace Glimpse.Agent.AspNet.Mvc.Razor
 {
@@ -9,7 +9,7 @@ namespace Glimpse.Agent.AspNet.Mvc.Razor
     {
         public void RegisterServices(GlimpseServiceCollectionBuilder services)
         {
-            services.AddTransient<IMvcRazorHost, ScriptInjectorRazorHost>();
+            //services.AddTransient<IMvcRazorHost, ScriptInjectorRazorHost>();
         }
     }
 }

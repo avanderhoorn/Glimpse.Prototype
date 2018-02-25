@@ -14,69 +14,7 @@
     <PackageLicenseUrl>https://github.com/Glimpse/Glimpse.Prototype/blob/dev/LICENSE.txt</PackageLicenseUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/Glimpse/Glimpse.Prototype</RepositoryUrl>
-    <EnableDefaultItems>false</EnableDefaultItems>
   </PropertyGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="**\*.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="ApplicationBuilderExtensions.cs" />
-    <Compile Include="DefaultGlimpseContextAccessor.cs" />
-    <Compile Include="GlimpseOptions.cs" />
-    <Compile Include="GlimpseServiceCollectionBuilder.cs" />
-    <Compile Include="GlimpseServiceCollectionExtensions.cs" />
-    <Compile Include="GlimpseServices.cs" />
-    <Compile Include="IGlimpseContextAccessor.cs" />
-    <Compile Include="Initialization\DefaultExtensionProvider.cs" />
-    <Compile Include="Initialization\FixedExtensionProvider.cs" />
-    <Compile Include="Initialization\IExtensionProvider.cs" />
-    <Compile Include="Initialization\IRegisterMiddleware.cs" />
-    <Compile Include="Initialization\IRegisterServices.cs" />
-    <Compile Include="Initialization\IResourceOptionsProvider.cs" />
-    <Compile Include="Initialization\IStartupOptions.cs" />
-    <Compile Include="Initialization\OptionsResourceOptionsProvider.cs" />
-    <Compile Include="Initialization\ResourceOptions.cs" />
-    <Compile Include="Initialization\StartupOptions.cs" />
-    <Compile Include="Internal\ContextData.cs" />
-    <Compile Include="Internal\Extensions\DictionaryExtensions.cs" />
-    <Compile Include="Internal\Extensions\HashExtensions.cs" />
-    <Compile Include="Internal\Extensions\JsonSerializerExtensions.cs" />
-    <Compile Include="Internal\Extensions\PathStringExtension.cs" />
-    <Compile Include="Internal\Extensions\ReflectionExtensions.cs" />
-    <Compile Include="Internal\Extensions\StringExtensions.cs" />
-    <Compile Include="Internal\Extensions\TypeExtension.cs" />
-    <Compile Include="Internal\IContextData.cs" />
-    <Compile Include="Internal\Messaging\Operation.cs" />
-    <Compile Include="Internal\Messaging\OperationOffset.cs" />
-    <Compile Include="Internal\Messaging\OperationStack.cs" />
-    <Compile Include="Internal\Messaging\OperationTiming.cs" />
-    <Compile Include="Internal\Messaging\Timing.cs" />
-    <Compile Include="Internal\Reflection\DefaultAssemblyProvider.cs" />
-    <Compile Include="Internal\Reflection\DefaultTypeActivator.cs" />
-    <Compile Include="Internal\Reflection\DefaultTypeSelector.cs" />
-    <Compile Include="Internal\Reflection\DefaultTypeService.cs" />
-    <Compile Include="Internal\Reflection\IAssemblyProvider.cs" />
-    <Compile Include="Internal\Reflection\ITypeActivator.cs" />
-    <Compile Include="Internal\Reflection\ITypeSelector.cs" />
-    <Compile Include="Internal\Reflection\ITypeService.cs" />
-    <Compile Include="Internal\SanitizeUserObjectsHelper.cs" />
-    <Compile Include="Internal\Serialization\DefaultJsonSerializerProvider.cs" />
-    <Compile Include="Internal\Serialization\GuidConverter.cs" />
-    <Compile Include="Internal\Serialization\IJsonSerializerProvider.cs" />
-    <Compile Include="Internal\Serialization\StringValuesConverter.cs" />
-    <Compile Include="Internal\Serialization\TimeSpanConverter.cs" />
-    <Compile Include="Internal\ServiceCollectionWrapper.cs" />
-    <Compile Include="Internal\TypeNameHelper.cs" />
-    <Compile Include="Messaging\AgentBrokerObservations.cs" />
-    <Compile Include="Messaging\AgentBrokerPayload.cs" />
-    <Compile Include="Messaging\IAgentBroker.cs" />
-    <Compile Include="Messaging\IMessage.cs" />
-    <Compile Include="Messaging\IMessagePublisher.cs" />
-    <Compile Include="Messaging\IMessageTypeProvider.cs" />
-    <Compile Include="Messaging\Message.cs" />
-    <Compile Include="Messaging\MessageContext.cs" />
-    <Compile Include="Messaging\PromoteToAttribute.cs" />
-  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.0.1" />
