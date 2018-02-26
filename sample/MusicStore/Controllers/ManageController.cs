@@ -285,7 +285,8 @@ namespace MusicStore.Controllers
                 return View("Error");
             }
             var userLogins = await UserManager.GetLoginsAsync(user);
-            var otherLogins = SignInManager.GetExternalAuthenticationSchemes().Where(auth => userLogins.All(ul => auth.AuthenticationScheme != ul.LoginProvider)).ToList();
+            var otherLoginsResult = await SignInManager.GetExternalAuthenticationSchemesAsync();
+            var otherLogins = otherLoginsResult.Where(auth => userLogins.All(ul => auth.Name != ul.LoginProvider)).ToList();
             ViewBag.ShowRemoveButton = user.PasswordHash != null || userLogins.Count > 1;
             return View(new ManageLoginsViewModel
             {
