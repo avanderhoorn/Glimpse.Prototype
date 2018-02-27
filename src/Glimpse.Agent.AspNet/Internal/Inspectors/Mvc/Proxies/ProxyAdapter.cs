@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Microsoft.Extensions.DiagnosticAdapter.Internal;
 
@@ -6,51 +5,23 @@ namespace Glimpse.Agent.Internal.Inspectors.Mvc.Proxies
 {
     public class ProxyAdapter
     {
-        private static readonly ProxyTypeCache _cache = new ProxyTypeCache();
+        private static readonly ProxyFactory Factory = new ProxyFactory();
 
-        public ProxyAdapter()
-        {
-            Listener = new Dictionary<string, Subscription>();
-        }
-
-        private IDictionary<string, Subscription> Listener { get; }
+        private HashSet<string> Listener { get; } = new HashSet<string>();
 
         public void Register(string typeName)
         {
-            var subscription = new Subscription();
-
-            Listener.Add(typeName, subscription);
+            Listener.Add(typeName);
         }
 
         public T Process<T>(string typeName, object target)
         {
-            Subscription subscription;
-            if (!Listener.TryGetValue(typeName, out subscription))
+            if (!Listener.Contains(typeName))
             {
                 return default(T);
             }
 
-            if (subscription.ProxiedType == null)
-            {
-                lock (subscription)
-                {
-                    if (subscription.ProxiedType == null)
-                    {
-                        var proxiedType = ProxyTypeEmitter.GetProxyType(_cache, typeof(T), target.GetType());
-
-                        subscription.ProxiedType = proxiedType;
-                    }
-                }
-            }
-
-            var instance = (T)Activator.CreateInstance(subscription.ProxiedType, target);
-
-            return instance;
-        }
-
-        private class Subscription
-        {
-            public Type ProxiedType { get; set; }
+            return Factory.CreateProxy<T>(target);
         }
     }
 }
