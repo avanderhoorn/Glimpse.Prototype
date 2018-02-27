@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -70,6 +72,16 @@ namespace MusicStore
                     .AddEntityFrameworkStores<MusicStoreContext>()
                     .AddDefaultTokenProviders();
 
+            // Create an Azure Active directory application and copy paste the following
+            services.AddAuthentication()
+                .AddOpenIdConnect(
+                    options =>
+                    {
+                        options.Authority = "https://login.windows.net/[tenantName].onmicrosoft.com";
+                        options.ClientId = "[ClientId]";
+                        options.ResponseType = OpenIdConnectResponseType.CodeIdToken;
+                    });
+
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy", builder =>
@@ -122,15 +134,7 @@ namespace MusicStore
             app.UseStaticFiles();
 
             // Add cookie-based authentication to the request pipeline
-            app.UseIdentity();
-
-            // Create an Azure Active directory application and copy paste the following
-            app.UseOpenIdConnectAuthentication(new OpenIdConnectOptions
-            {
-                Authority = "https://login.windows.net/[tenantName].onmicrosoft.com",
-                ClientId = "[ClientId]",
-                ResponseType = OpenIdConnectResponseType.CodeIdToken,
-            });
+            app.UseAuthentication();
 
             // Add MVC to the request pipeline
             app.UseMvc(routes =>

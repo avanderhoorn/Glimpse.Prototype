@@ -1,7 +1,6 @@
 using System;
 using Glimpse.Agent.AspNet.Messages;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.Internal;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Http.Features;
 

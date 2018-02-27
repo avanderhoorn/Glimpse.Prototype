@@ -10,7 +10,7 @@ md dist
 
 REM get time
 For /f "tokens=2-4 delims=/ " %%a in ('date /t') do (set DATE=%%c%%a%%b)
-For /f "tokens=1-2 delims=/:" %%a in ("%TIME%") do (set TIME=%%a%%b)
+For /f "tokens=1-2 delims=/: " %%a in ("%TIME%") do (set TIME=%%a%%b)
 
 set MILESTONE=beta2-%DATE%%TIME%
 

@@ -1,5 +1,4 @@
 ﻿using System;
-using Glimpse.Internal;
 
 namespace Glimpse.Agent.Messages
 {
