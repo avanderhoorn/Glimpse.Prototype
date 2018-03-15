@@ -10,6 +10,8 @@
 
         public string ContextTemplate { get; set; }
 
+        public string ContextSummaryTemplate { get; set; }
+
         public string MetadataTemplate { get; set; }
 
         public string ClientScriptTemplate { get; set; }
