@@ -23,6 +23,11 @@
     <script type="text/javascript" src="~/Scripts/modernizr-2.6.2.js"></script>
     <script src="~/Scripts/jquery-2.0.3.js"></script>
     <script src="~/Scripts/jquery.signalR-2.0.1.min.js"></script>
+    <style type="text/css">
+        div.glimpse-hud {
+            height: 50px !important;
+        }
+    </style>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -48,10 +53,10 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer class="navbar navbar-fixed-bottom navbar-default text-center">
+        @*<footer class="navbar navbar-fixed-bottom navbar-default text-center">
             <p><a href="https://www.github.com/aspnet/MusicStore">www.github.com/aspnet/MusicStore</a></p>
             <small>@Html.ActionLink("admin", "Index", "StoreManager", new { area = "Admin" })</small>
-        </footer>
+        </footer>*@
     </div>
 
     <environment names="Development,NtlmAuthentication,OpenIdConnect,SocialTesting">
