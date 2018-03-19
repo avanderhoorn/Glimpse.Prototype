@@ -1,0 +1,2101 @@
+/*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css */
+
+/**
+ * 1. Change the default font family in all browsers (opinionated).
+ * 2. Correct the line height in all browsers.
+ * 3. Prevent adjustments of font size after orientation changes in IE and iOS.
+ */
+
+html {
+  font-family: sans-serif; /* 1 */
+  line-height: 1.15; /* 2 */
+  -ms-text-size-adjust: 100%; /* 3 */
+  -webkit-text-size-adjust: 100%; /* 3 */
+}
+
+/**
+ * Remove the margin in all browsers (opinionated).
+ */
+
+body {
+  margin: 0;
+}
+
+/* HTML5 display definitions
+   ========================================================================== */
+
+/**
+ * Add the correct display in IE 9-.
+ * 1. Add the correct display in Edge, IE, and Firefox.
+ * 2. Add the correct display in IE.
+ */
+
+article,
+aside,
+details, /* 1 */
+figcaption,
+figure,
+footer,
+header,
+main, /* 2 */
+menu,
+nav,
+section,
+summary { /* 1 */
+  display: block;
+}
+
+/**
+ * Add the correct display in IE 9-.
+ */
+
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+}
+
+/**
+ * Add the correct display in iOS 4-7.
+ */
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Add the correct display in IE 10-.
+ * 1. Add the correct display in IE.
+ */
+
+template, /* 1 */
+[hidden] {
+  display: none;
+}
+
+/* Links
+   ========================================================================== */
+
+/**
+ * 1. Remove the gray background on active links in IE 10.
+ * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
+ */
+
+a {
+  background-color: transparent; /* 1 */
+  -webkit-text-decoration-skip: objects; /* 2 */
+}
+
+/**
+ * Remove the outline on focused links when they are also active or hovered
+ * in all browsers (opinionated).
+ */
+
+a:active,
+a:hover {
+  outline-width: 0;
+}
+
+/* Text-level semantics
+   ========================================================================== */
+
+/**
+ * 1. Remove the bottom border in Firefox 39-.
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+
+abbr[title] {
+  border-bottom: none; /* 1 */
+  text-decoration: underline; /* 2 */
+  text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * Prevent the duplicate application of `bolder` by the next rule in Safari 6.
+ */
+
+b,
+strong {
+  font-weight: inherit;
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * Add the correct font style in Android 4.3-.
+ */
+
+dfn {
+  font-style: italic;
+}
+
+/**
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts in Chrome, Firefox, and Safari.
+ */
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/**
+ * Add the correct background and color in IE 9-.
+ */
+
+mark {
+  background-color: #ff0;
+  color: #000;
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Embedded content
+   ========================================================================== */
+
+/**
+ * Remove the border on images inside links in IE 10-.
+ */
+
+img {
+  border-style: none;
+}
+
+/**
+ * Hide the overflow in IE.
+ */
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* Grouping content
+   ========================================================================== */
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/**
+ * Add the correct margin in IE 8.
+ */
+
+figure {
+  margin: 1em 40px;
+}
+
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+}
+
+/* Forms
+   ========================================================================== */
+
+/**
+ * 1. Change font properties to `inherit` in all browsers (opinionated).
+ * 2. Remove the margin in Firefox and Safari.
+ */
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font: inherit; /* 1 */
+  margin: 0; /* 2 */
+}
+
+/**
+ * Restore the font weight unset by the previous rule.
+ */
+
+optgroup {
+  font-weight: bold;
+}
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+
+button,
+input { /* 1 */
+  overflow: visible;
+}
+
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+
+button,
+select { /* 1 */
+  text-transform: none;
+}
+
+/**
+ * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
+ *    controls in Android 4.
+ * 2. Correct the inability to style clickable types in iOS and Safari.
+ */
+
+button,
+html [type="button"], /* 1 */
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button; /* 2 */
+}
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/**
+ * Change the border, margin, and padding in all browsers (opinionated).
+ */
+
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+
+legend {
+  box-sizing: border-box; /* 1 */
+  color: inherit; /* 2 */
+  display: table; /* 1 */
+  max-width: 100%; /* 1 */
+  padding: 0; /* 3 */
+  white-space: normal; /* 1 */
+}
+
+/**
+ * Remove the default vertical scrollbar in IE.
+ */
+
+textarea {
+  overflow: auto;
+}
+
+/**
+ * 1. Add the correct box sizing in IE 10-.
+ * 2. Remove the padding in IE 10-.
+ */
+
+[type="checkbox"],
+[type="radio"] {
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+
+[type="search"] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
+/**
+ * Remove the inner padding and cancel buttons in Chrome and Safari on OS X.
+ */
+
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * Correct the text style of placeholders in Chrome, Edge, and Safari.
+ */
+
+::-webkit-input-placeholder {
+  color: inherit;
+  opacity: 0.54;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+@font-face {
+    font-family: 'Selawik';
+    src: url(17b3a39e4a4ce84dabf73b978e1ddd9c.woff2) format('woff2'),
+         url(aba3c77408bfb1996265e40eb627e16c.woff) format('woff');
+}
+
+html {
+    font-size: small;
+    line-height: normal;
+}
+body {
+    font-family: 'Segoe UI', 'Selawik', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100%;
+    margin: 0;
+    width: 100%;
+}
+pre {
+    margin: 0;
+}
+[type="button"] {
+    cursor: pointer;
+}
+[type="button"]::-moz-focus-inner
+{
+    border : 0px;
+}
+[type="button"]:focus
+{
+    outline : none;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0.5rem;
+}
+::-webkit-scrollbar * {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+}
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+.ShellView__shell___1od10 {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+    width: 100vw;
+}
+
+.ShellView__shellContent___vo90n {
+    display: flex;
+    flex-direction: row;
+    flex: auto;
+    overflow: hidden;
+}
+
+.ShellView__shellContentActivityBar___hrU73 {
+    flex: none;
+}
+
+.ShellView__shellContentDetail___1Pr3l {
+    display: flex;
+    flex: auto;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.ShellView__shellStatusBar___3dpma {
+    flex: none;
+}
+.Icon__iconInline___2x2aP {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+.Icon__iconPath___32U9l {
+    fill: currentColor;
+}.ShellActivityBarView__activityBar___y0ocQ {
+    display: flex;
+    flex-direction: column;
+    width: 3.5rem;
+}
+
+.ShellActivityBarView__activityBarButton___2v3pv {
+    background: transparent;
+    border: none;
+    margin: 1em 0em 1em 0em;
+    padding: 0.25rem 0 0;
+    border-left: 0.25rem solid transparent;
+}
+
+.ShellActivityBarView__activityBarButton___2v3pv:hover {
+}
+
+.ShellActivityBarView__activityBarButton___2v3pv:active {
+}
+
+.ShellActivityBarView__activityBarButtonActive___1ysdE {
+}
+
+.ShellActivityBarView__activityBarIcon___zOQzH {
+    height: 1.75rem;
+    width: 1.75rem;
+}
+.ShellStatusBarView__statusBar___d0l8w {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    min-height: 1.5rem;
+    padding: 0.1rem 1rem 0rem 1rem;
+}
+
+.ShellStatusBarView__statusBarGroup___1NZt1 {
+    padding: 0 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.ShellStatusBarView__statusBarGroup___1NZt1 > span {
+    padding: 0 0.5rem 0.125rem 0.5rem;
+    cursor: default;
+}
+
+.ShellStatusBarView__statusBarButton___36JYf {
+    padding: 0 0.25rem;
+}
+.ShellStatusBarView__statusBarButton___36JYf:hover {
+}
+
+.ShellStatusBarView__statusBarButtonActive___2e5wz {
+}
+
+.ShellStatusBarView__statusBarButtonIcon___2rzrL {
+    height: 1.25rem;
+    width: 1.25rem;
+    color: #888888;
+}
+.ShellStatusBarView__statusBarButton___36JYf:hover .ShellStatusBarView__statusBarButtonIcon___2rzrL, .ShellStatusBarView__statusBarButtonActive___2e5wz .ShellStatusBarView__statusBarButtonIcon___2rzrL {
+    color: #ffffff;
+}
+.Common__table___3VuJF {
+    width: 100%;
+    border-spacing: 0px;
+    border-collapse: separate;
+    table-layout: fixed;
+}
+
+.Common__table___3VuJF > thead > tr > th {
+    text-align: left;
+    font-weight: bold;
+    padding: 0.4rem 0.75rem;
+    white-space: nowrap;
+}
+
+.Common__table___3VuJF > thead > tr > th + th {
+    border-left-width: 1px;
+    border-left-style: solid;
+}
+
+.Common__table___3VuJF > tbody > tr {
+    vertical-align: top;
+}
+
+.Common__table___3VuJF > tbody > tr > td {
+    padding: 0.4rem 0.75rem;
+}
+
+.Common__table___3VuJF > tbody > tr:nth-child(even) {
+}
+
+.Common__table___3VuJF > tbody > tr.Common__tableSelectableRow___1M8AJ {
+    cursor: pointer;
+    outline: none;
+}
+
+.Common__table___3VuJF > tbody > tr.Common__tableSelectableRow___1M8AJ:hover {
+}
+
+.Common__table___3VuJF > tbody > tr.Common__tableSelectedRow___2_thp.Common__tableSelectableRow___1M8AJ {
+}
+
+.Common__table___3VuJF > tbody > tr > td.Common__tableNoPadding___1qbZU {
+    padding: 0px;
+}
+
+.Common__table___3VuJF > tbody > tr > td.Common__tableNoData___1Ybo- {
+    padding-left: 0.75rem;
+}
+
+.Common__table___3VuJF .Common__tableHeadSpacer___3blY1 {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    height: 0.25rem;
+}
+
+.Common__table___3VuJF .Common__tableHeadSpacer___3blY1.Common__tableHeadSpacerNoLine___2U--z {
+    border-bottom-color: transparent;
+}
+
+.Common__noData___24Ofu {
+}
+
+.Common__paramName___2AdZT {
+    font-weight: bold;
+}
+
+.Common__paramValue___hBbfe {
+}
+
+.Common__paramOverwritten___3hFN0 {
+    text-decoration: line-through;
+}
+
+.Common__detailTitle___NvF1H {
+    font-size: 1.75rem;
+    margin-bottom: 1.25rem;
+    margin-top: 0.75rem;
+    font-weight: bold;
+}
+
+.Common__trimText___3taHb {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.Common__noWrapText___1FafM {
+    white-space: nowrap;
+}
+td.Common__noWrapText___1FafM {
+    overflow: hidden;
+}
+
+.Common__contextSection___3EHB5 {
+    margin-top: 3rem;
+}
+
+.Common__contextSection___3EHB5:first-child {
+    margin-top: 1rem;
+}
+
+.Common__contextSection___3EHB5 .Common__detailTitle___NvF1H {
+    margin-top: 0;
+}
+
+.Common__modal___d4R-Y {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    right: 40px;
+    bottom: 40px;
+    overflow: auto;
+    outline: none;
+    padding: 20px;
+}
+
+.Common__modalOverlay___18I25 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+.Common__modalInner___34bsi {
+    position: relative;
+}
+
+.Common__modalClose___3OSi_ {
+    position: absolute;
+    right: 0;
+    margin-right: 0.25rem;
+}
+
+.Common__modalCloseIcon___19nYg {
+    height: 1.5rem;
+    width: 1.5rem;
+}.DebugInputButton__input___qdvph {
+    display: block;
+    width: 100%;
+    height: calc(100vh - 18rem);
+}.RequestsView__requests___3-dOH {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.RequestsView__requestsSideBar___15DU1 {
+    display: flex;
+    flex-direction: column;
+    flex: none;
+    width: 20%;
+    min-width: 18rem;
+    max-width: 25rem;
+}
+
+.RequestsView__requestsDetail___2DIt7 {
+    display: flex;
+    flex: auto;
+    flex-direction: column;
+    min-width: 0;
+}.RequestsSideBarView__history___9d3ZR {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+}
+
+.RequestsSideBarView__historyContainer___3_mqU {
+    position: relative;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+.SideBar__sideBar___2UI2S {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    border-right-width: 1px;
+    border-right-style: solid;
+}
+
+.SideBar__sideBarTitle___f0q7X {
+    font-weight: bold;
+    padding: 0.75rem 1rem 0.75rem 1rem;
+}.SideBarSection__sideBar___rWGSx {
+    display: flex;
+    flex: none;
+    flex-direction: column;
+}
+
+.SideBarSection__sideBarTitleHolder___2Tbjp {
+    border-top-width: 1px;
+    border-top-style: solid;
+    flex: none;
+}
+
+.SideBarSection__sideBarTitle___pJVSt {
+    padding: 0.5rem 1rem 0.5rem 1rem;
+}
+
+.SideBarSection__sideBarIsExpandable___19Ap- {
+    flex: auto;
+}
+
+.SideBarSection__sideBarTitleIsImportant___w_-zs .SideBarSection__sideBarTitle___pJVSt {
+    padding-left: 0.75rem;
+    border-left-width: 0.25rem;
+    border-left-style: solid;
+}
+
+.SideBarSection__sideBarContent___1ZiRR {
+    display: flex;
+    flex: auto;
+    flex-direction: column;
+}
+
+.SideBarSection__sideBarNoRecords___8BDPu {
+    padding: 1rem 1rem 1.5rem;
+}
+.RequestsSideBarRequestView__requestButton___3EwbS {
+    background: transparent;
+    border: none;
+    color: inherit;
+    flex: none;
+    margin: 0;
+    padding: 0.75rem 1rem 0.75rem 1rem;
+}
+.RequestsSideBarRequestView__requestButton___3EwbS:hover {
+}
+.RequestsSideBarRequestView__requestButton___3EwbS.RequestsSideBarRequestView__requestButtonActive___20llT {
+}
+
+.RequestsSideBarRequestView__requestContainer___3tdAp {
+    display: flex;
+    flex-direction: column;
+}
+
+.RequestsSideBarRequestView__requestSummaryLine___2EClN, .RequestsSideBarRequestView__requestDetailLine___2XTl3 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.RequestsSideBarRequestView__requestSummaryLine___2EClN {
+    font-size: 1rem;
+}
+
+.RequestsSideBarRequestView__requestDetailLine___2XTl3 {
+    font-size: 0.75rem;
+    margin-top: 0.3rem;
+}
+
+.RequestsSideBarRequestView__requestStatusContainer___35NdS {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.RequestsSideBarRequestView__requestStatusContainer___35NdS > span {
+    margin-right: 2px;
+}
+
+svg.RequestsSideBarRequestView__requestClientIcon___2xIKF {
+    height: 0.85rem;
+    width: 0.85rem;
+    margin-right: 0.25rem;
+}
+
+.RequestsSideBarRequestView__requestButton___3EwbS.RequestsSideBarRequestView__requestButtonActive___20llT .RequestsSideBarRequestView__requestSummaryLine___2EClN,
+.RequestsSideBarRequestView__requestButton___3EwbS.RequestsSideBarRequestView__requestButtonActive___20llT .RequestsSideBarRequestView__requestDetailLine___2XTl3,
+.RequestsSideBarRequestView__requestButton___3EwbS.RequestsSideBarRequestView__requestButtonActive___20llT svg.RequestsSideBarRequestView__requestClientIcon___2xIKF {
+}.StatusLabel__statusLabelContainer___HL8YZ {
+    display: flex;
+    align-items: center;
+}
+
+.StatusLabel__statusLabelBlueIcon___3MafR,
+.StatusLabel__statusLabelGreenIcon___1UTQJ,
+.StatusLabel__statusLabelYellowIcon___1mw3d,
+.StatusLabel__statusLabelRedIcon___ClZQ1 {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+    margin-right: 2px;
+}
+
+.StatusLabel__statusLabelBlueIcon___3MafR {
+    color: #1ba1e2;
+}
+
+.StatusLabel__statusLabelGreenIcon___1UTQJ {
+    color: #78b24c;
+}
+
+.StatusLabel__statusLabelYellowIcon___1mw3d {
+    color: #f8a800;
+}
+
+.StatusLabel__statusLabelRedIcon___ClZQ1 {
+    color: #b03b00;
+}
+.UrlText__url___-G2gf {
+    white-space: nowrap;
+}
+.UrlText__urlProtocol___1Ipqt {
+}
+.UrlText__urlProtocolHttps___BT4-U {
+    height: 1rem;
+    width: 1rem;
+    vertical-align: bottom;
+}
+.UrlText__urlProtocolHttpsColor___1iwZP {
+}
+svg.UrlText__urlProtocolHttps___BT4-U {
+    margin-left: -2px;
+    margin-right: 2px;
+}.ClientLabel__clientLabelContainer___2XZsr {
+    display: flex;
+    align-items: center;
+}
+
+.ClientLabel__clientLabelIcon___1bPcZ {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+    margin-right: 5px;
+}
+.RequestsDetailsView__detail___8iEPv {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow: hidden;
+    padding: 0.5rem 2rem;
+}
+
+.RequestsDetailsView__detailTitle___2ZX0b {
+    border-bottom: 1px solid;
+    flex: none;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.RequestsDetailsView__detailContent___2jB8I {
+    display: flex;
+    flex-direction: row;
+    flex: auto;
+    overflow: hidden;
+}
+
+.RequestsDetailsView__detailContentOverview___qhshZ {
+    flex: none;
+    width: 14%;
+    display: flex;
+}
+
+.RequestsDetailsView__detailContentDetail___1ugzx {
+    display: flex;
+    flex: auto;
+    flex-direction: column;
+    min-width: 0;
+}
+.TabStrip__strip___hUCK0 {
+    display: flex;
+    flex-direction: column;
+    flex: auto;
+    overflow: hidden;
+    width: 100%;
+}
+
+.TabStrip__stripButtonHolder___2Kb4q {
+    display: flex;
+    flex: none;
+    flex-direction: row;
+}
+
+.TabStrip__stripButton___2pizC {
+    background: transparent;
+    border: none;
+    color: inherit;
+    margin: 0;
+    padding: 0.25rem 0;
+}
+.TabStrip__stripButton___2pizC:hover {
+}
+
+.TabStrip__stripButtonActive___1O88B {
+}
+
+.TabStrip__stripPlain___3JjMv .TabStrip__stripButton___2pizC {
+    margin: 0 1.5rem;
+}
+
+.TabStrip__stripPlain___3JjMv .TabStrip__stripButtonActive___1O88B {
+    border-bottom-width: 0.2rem;
+    border-bottom-style: solid;
+}
+
+.TabStrip__stripTabs___16pyx {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+
+.TabStrip__stripTabs___16pyx .TabStrip__stripButton___2pizC {
+    border: 1px solid transparent;
+    margin: 0 0.25rem;
+    padding: 0.25rem 0.5rem 0.5rem 0.5rem;
+    margin-bottom: -1px;
+}
+
+.TabStrip__stripTabs___16pyx .TabStrip__stripButtonActive___1O88B {
+    border-width: 1px;
+    border-style: solid;
+    border-bottom-color: transparent;
+}
+
+.TabStrip__stripPlain___3JjMv .TabStrip__stripButton___2pizC:first-child, .TabStrip__stripTabs___16pyx .TabStrip__stripButton___2pizC:first-child {
+    margin-left: 0;
+}
+
+.TabStrip__stripPlain___3JjMv .TabStrip__stripButton___2pizC:last-child, .TabStrip__stripTabs___16pyx .TabStrip__stripButton___2pizC:last-child {
+    margin-right: 0;
+}
+
+.TabStrip__stripDetail___18B5q {
+    display: flex;
+    flex: auto;
+    overflow: hidden;
+}
+
+.TabStrip__stripContainerModal___2Apw- .TabStrip__stripDetail___18B5q > div {
+    overflow-y: auto;
+    height: calc(100vh - 17rem);
+    width: 100%;
+}
+
+.TabStrip__stripContainerSection___1bUaO .TabStrip__stripDetail___18B5q > div {
+    overflow-y: auto;
+    height: 35vh;
+    width: 100%;
+    margin-bottom: 0.5rem;
+}.RequestsDetailsOverviewView__overview___1s-8L {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    border-right: 1px solid transparent;
+    margin-right: 1rem;
+}
+
+.RequestsDetailsOverviewView__overviewTitle___G69aA {
+    flex: none;
+    padding-bottom: 0.5rem;
+    font-size: 1.25rem;
+}
+
+.RequestsDetailsOverviewView__overviewDetailContainer___2VbjU {
+    overflow-y: auto;
+    position: relative;
+    flex-grow: 1;
+}
+
+.RequestsDetailsOverviewView__overviewDetail___23rMD {
+    flex: auto;
+    position: absolute;
+    left: 0;
+    right: 5px;
+    top: 0;
+}
+
+.RequestsDetailsOverviewView__overviewDetailItem___JterV {
+    margin-bottom: 1rem;
+}
+
+.RequestsDetailsOverviewView__overviewDetailItem___JterV div {
+    white-space: nowrap;
+}
+
+.RequestsDetailsOverviewView__overviewDetailTitle___1czqF {
+    margin: 0.5rem 0 0.125rem;
+}
+.ExpandCollapseButton__expandCollapseButton___Jv2kS {
+    display: flex;
+}
+
+.ExpandCollapseButton__expandCollapseButton___Jv2kS:focus {
+    outline: none;
+}
+
+.ExpandCollapseButton__expandCollapseButtonIcon___12o5i {
+    height: 1.5rem;
+    width: 1.5rem;
+
+    /* Safari and Firefox ignore width for empty <div>'s. */
+    min-height: 1.5rem;
+    min-width: 1.5rem;
+}
+.ExpandableText__expandableText___32Xts {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.ExpandableText__expandableTextHidden___1X-sv {
+    padding-bottom: 0.15rem;		
+    padding-top: 0.15rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}.Logging__logView___1jtYr {
+    display: flex;
+    flex-direction: column;
+}
+
+.Logging__logViewHeader___Cphb0 {
+    flex: none;
+}
+
+.Logging__logViewFilterHeader___1-9hM {
+    display: flex;
+    flex-direction: row;
+}
+
+.Logging__logViewExpandCollapseAll___2KOc- {
+    border-left-style: solid;
+    border-left-width: 1px;
+    display: flex;
+    margin-left: auto;
+    margin-bottom: 1.125rem;
+    margin-top: 0.125rem;
+}
+
+.Logging__logViewTable___1qBZl {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.Logging__logViewTable___1qBZl > thead > tr > th {
+    border-left-color: transparent;
+    padding: 0rem 0.75rem;
+}
+
+.Logging__logViewTableContainer___1QelD {
+    flex: auto;
+    position: relative;
+    overflow-y: auto;
+}
+
+.Logging__logNoMessages___2M5NZ {
+    padding-left: 0.875rem;
+}
+
+.Logging__logIconColumn___2JOk3 {
+    align-items: flex-start;
+    display: flex;
+    flex: auto;
+    flex-direction: row;
+}
+
+.Logging__logTableStyle___2z3IV {
+    overflow: hidden;
+}
+
+.Logging__logLevelIcon___1u5YN {
+    width: 1rem;
+    margin-right: 0.25rem;
+}
+
+.Logging__logAgentIcon___29k7T {
+    width: 1.25rem;
+    margin-right: 0.25rem;
+}
+
+.Logging__logDurationColumn___1GaCI {
+    text-align: right;
+}
+
+.Logging__logContent___sabR- {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    word-break: break-all; /* Default to 'break-all' as Firefox doesn't support 'break-word'. */
+    word-break: break-word;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+}
+
+.Logging__logContent___sabR- a {
+    text-decoration: none;
+}
+
+.Logging__logContent___sabR- a:hover {
+    text-decoration: underline;
+}
+
+.Logging__logContent___sabR- a:active {
+}
+
+.Logging__logContent___sabR- a:focus {
+    outline : none;
+}
+
+/*
+Table messages have a table header with some padding in them to make sure that
+the line separating header entries doesn't look squat and short, but this also
+gives the impression that there is more padding for tables than for other types
+of messages. This negative margin pulls it up and gives the aesthetic impression
+that the padding is the same, even if technically speaking it isn't.
+*/
+.Logging__logContentTable___SQEhR {
+    margin-top: -3px;
+}
+
+.Logging__logTimeSpanIcon___3q9S0 {
+    flex: none;
+    margin-right: 0.35rem;
+    width: 1rem;
+    margin-top: 0.25rem;
+}
+
+.Logging__logTimeSpanIconPath___108a4 {
+}
+
+.Logging__logGroup___1TV7j {
+    position: relative;
+    display: inline-block;
+    margin-left: 1.5rem;
+    margin-right: 0.5rem;
+}
+
+.Logging__logGroup___1TV7j.Logging__logGroupLine___1BRe6:before {
+    position: absolute;
+    border-left: 1px solid;
+    top: -0.5rem;
+    bottom: -0.6rem;
+    content: "";
+}
+
+.Logging__logGroup___1TV7j.Logging__logGroupLine___1BRe6.Logging__logGroupLineEnd___2kIC4:before {
+    bottom: 0;
+}
+
+.Logging__logGroup___1TV7j.Logging__logGroupLine___1BRe6.Logging__logGroupLineEnd___2kIC4:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    width: 3px;
+    background-image: linear-gradient(to right, #f1f1f1 3px, transparent 3px);
+}
+.AgentIcon__icon___j4EHh {
+    width: 1rem;
+    margin-right: 0.219rem;
+    margin-top: 0.25rem;
+}
+
+.AgentIcon__iconPathClient___3a-DF {
+}
+
+.AgentIcon__iconPathServer___3FuE5 {
+}.LevelIcon__icon___ZKaom {
+    width: 1rem;
+    margin-right: 0.25rem;
+    margin-top: 0.25rem;
+}
+
+.LevelIcon__iconPathWarning___cJASc {
+    fill: #facb00;
+}
+
+.LevelIcon__iconPathError___3Qjzs {
+    fill: #e81123;
+}.ExpandCollapseAllBar__expandCollapseAll___24zaN {
+    display: flex;
+    flex-direction: row;
+}
+
+.ExpandCollapseAllBar__expandCollapseAllButton___1M47t {
+    flex: none;
+}
+
+.ExpandCollapseAllBar__expandCollapseAllIcon___19wUN {
+    height: 1.25rem;
+    margin-left: 0.75rem;
+    width: 1.25rem;
+}
+
+.ExpandCollapseAllBar__expandCollapseAllIconPath___3_Lkq {
+}.JsonTable__jsonTableContainer___1TxBn {
+    overflow-x: auto;
+    position: relative;
+}
+
+.JsonTable__jsonTable___2veE9 {
+    table-layout: auto;
+}
+
+.JsonTable__jsonTableFaderEven___2daXG, .JsonTable__jsonTableFaderOdd___1w2yC {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1rem;
+}
+
+.JsonTable__jsonTableFaderEven___2daXG {
+}
+
+.JsonTable__jsonTableFaderOdd___1w2yC {
+}
+
+.JsonTable__jsonTable___2veE9 tr:nth-child(even) {
+    background-color: transparent !important;
+}
+
+.JsonTable__jsonTable___2veE9 > thead > tr > th {
+    white-space: nowrap;
+}
+
+.JsonTable__jsonTable___2veE9 > thead {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    padding-bottom: 0.25rem;
+}
+
+.JsonTable__jsonTableHeaderLabel___3QQ0b {
+    padding: 0.3rem 0.75rem !important;
+}
+
+.JsonTable__jsonTableHeaderCount___3Fqv1 {
+    font-weight: normal;
+}
+
+.JsonTable__jsonTableHeadSpacer___Mce1H {
+    height: 0.125rem !important;
+}
+
+.JsonTable__jsonTableCell___1xfyl {
+    position: relative;
+}
+
+.JsonTable__jsonTableObjectCell___1jVyN > ul {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 !important;
+    background-color: transparent !important;
+}
+.JsonTable__jsonTableObjectCell___1jVyN > ul > li:first-child {
+    padding-top: 0 !important;
+}
+.JsonTable__jsonTableObjectCell___1jVyN > ul > li > div:first-child {
+    padding-right: 0.15em !important;
+}
+.JsonTable__jsonTableObjectCell___1jVyN > ul > li > label:first-of-type {
+    display: none !important;
+}
+.JsonTable__jsonTableObjectCell___1jVyN > ul > li > span:first-of-type {
+    padding-left: 0 !important;
+}
+.LoggingLabel__loggingLabelUnnamed___1gjW8 {
+}
+.LoggingStatement__statement___3Geh9 {    
+}
+
+.token {
+    border: 1px dotted transparent;
+    padding: 0 0.125rem;
+}
+.token.tokenString {
+}
+.token.tokenInteger {
+}
+
+.emojione {
+  width: 1rem;
+  height: 1rem;
+  margin-bottom: -2px;
+}.LoggingTimeSpan__logTimeSpanCell___2V64a {
+    align-items: flex-start;
+    display: flex;
+    flex: auto;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.LoggingTimeSpan__logTimeSpanFill___3sobH {
+    margin-left: 0.5rem;
+}
+
+.LoggingTimeSpan__logTimeSpanDuration___2YBv8 {
+    flex: none;
+    border-left-width: 1px;
+    border-left-style: solid;
+    border-right-width: 1px;
+    border-right-style: solid;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    margin-left: 0.75rem;
+    margin-right: -0.75rem;
+}
+
+.LoggingTimeSpan__logDurationColumn___3JmSt {
+    text-align: right;
+}
+.FilterBar__filterBar___3i8uB {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1.125rem;
+    margin-top: 0.125rem;
+}
+
+.FilterBar__filterGroup___2GLr4 {
+    border: none;
+    border-left-width: 1px;
+    border-left-style: solid;
+    margin-left: 0.65rem;
+}
+
+.FilterBar__filterShowAll___rIBiy, .FilterBar__filterShowAll___rIBiy:hover, .FilterBar__filterShowAll___rIBiy:active {
+    background: transparent;
+    border: none;
+    padding: 0.5rem;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.FilterBar__filterShowAll___rIBiy:hover {
+    text-decoration: underline;
+}
+
+.FilterBar__filterShowAll___rIBiy:active {
+}
+
+.FilterBar__filterShowAll___rIBiy:focus {
+    outline : none;
+}
+.FilterButton__filterButton___1waRX, .FilterButton__filterButtonShown___dM8it, .FilterButton__filterButtonNotShown___kr-em {
+    background-color: transparent;
+    margin-left: 0.65rem;
+    padding: 0.313rem;
+    padding-left: 0.438rem;
+    padding-right: 0.438rem;
+}
+
+.FilterButton__filterButtonShown___dM8it {
+    border: 1px solid transparent;
+}
+
+.FilterButton__filterButtonShown___dM8it:hover {
+    border: 1px solid transparent;
+}
+
+.FilterButton__filterButtonNotShown___kr-em {
+    border: 1px solid transparent;
+}
+
+.FilterButton__filterButtonNotShown___kr-em:hover {
+    border: 1px solid transparent;
+}
+
+.FilterButton__filterButtonNotShown___kr-em:active {
+}
+
+.FilterButton__filterButtonContent___2P7-8 {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    min-height: 1.25rem;
+}
+
+.FilterButton__filterButtonIcon___ZRxNh {
+    margin-right: 0.219rem;
+    width: 1rem;
+}.LoggingFilterBar__agentBrowserIcon___32h-c {
+}
+
+.LoggingFilterBar__agentServerIcon___3TNK2 {
+}.StackFrame__stackFrame___15Fsj {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+.StackFrame__stackFrameFileName___bUqKt {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.StackFrame__stackFrameLineNumber___1QFfB {
+    flex: none;
+}
+.DataView__view___jEK5g {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 0;
+}
+
+.DataView__master___1fvEG {
+    display: flex;
+    flex: auto;
+    flex-direction: column;
+    overflow-y: hidden;
+}
+
+.DataView__master___1fvEG:hover {
+    overflow-y: auto;
+    overflow-y: overlay;
+}
+
+.DataView__detail___1cfoq {
+    display: flex;
+    flex: none;
+    flex-direction: column;
+    height: 33%;
+    margin: 0rem -2rem -0.5rem -1rem;
+}.DataDetailsView__view___fpwOj {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 10rem;
+}.DetailBiPanel__detail___24y3T {
+    border-top-width: 0.25rem;
+    border-top-style: solid;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.DetailBiPanel__detailPanel___24P-c {
+    display: flex;
+    flex: none;
+    flex-direction: column;
+    width: 50%;
+}
+
+.DetailBiPanel__detailMargin___2KlbB {
+    flex: none;
+    width: 1px;
+}
+
+.DetailBiPanel__detailPanelTitle___FHOIq {
+    align-items: center;
+    display: flex;
+    flex: none;
+    font-weight: bold;
+    padding: 0.5rem 2rem 0.5rem 2rem
+}
+
+.DetailBiPanel__detailPanelContent___9Z6hm {
+    display: flex;
+    flex: auto;
+}
+.CodeView__codeView___QXLAq > pre > code {
+    background-color: transparent;
+    overflow-x: initial;
+}
+
+.hljs-line-numbers {
+    text-align: right;
+    border-right: 1px solid #46464a;
+    color: #999;
+    margin-right: 0.5rem;
+    padding-right: 0.5rem;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 0 0.5em;
+}
+
+.hljs-comment,
+.hljs-quote {
+    color: #777;
+}
+
+.hljs-variable,
+.hljs-template-variable,
+.hljs-regexp,
+.hljs-meta,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-params,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-link,
+.hljs-deletion,
+.hljs-string {
+    color: #cd917a;
+}
+
+.hljs-literal,
+.hljs-number {
+    color: #b6cda9;
+}
+
+.hljs-attr {
+    color: #cf9ce0;
+}
+
+.hljs-section,
+.hljs-title,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-type,
+.hljs-attribute {
+    color: #e496a7;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-addition {
+    color: #8f9c6c;
+}.DataOperationCommandView__commandView___19D82 {
+    padding: 1rem;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.DataOperationCommandView__commandView___19D82 {
+    overflow-x: auto;
+    overflow-x: overlay;
+    overflow-y: auto;
+    overflow-y: overlay;
+}
+.DataOperationSummary__summaryTabTitles___zSfhq {
+    padding-left: 1.5rem;
+    padding-top: 0.5rem;
+}
+
+.DataOperationSummary__summaryTabContent___2niBE {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.DataOperationSummary__summaryTabContent___2niBE {
+    overflow-x: auto;
+    overflow-x: overlay;
+    overflow-y: auto;
+    overflow-y: overlay;
+}
+.DataOperationSummaryConnection__connection___3rLpv {
+    padding: 1rem 2rem;
+}.DataOperationSummaryGeneralInfo__generalInfo___mZy4h {
+    padding: 1rem 2rem;
+}
+
+.DataOperationSummaryGeneralInfo__generalInfo___mZy4h > ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.DataOperationSummaryGeneralInfo__generalInfo___mZy4h > ul > li {
+    margin-bottom: 0.5rem;
+}
+.DataOperationSummaryParameters__params___1QSxc {
+    padding: 1rem 2rem;
+}.QueryView__query___3Hj13 {
+    flex: 1 0;
+    padding: 0.4rem 0rem 0rem 0rem;
+    overflow-y: hidden;
+}
+.FixedWidthLeftColumnTable__fixedWidthLeftColumnTableContainer___2h9cd {
+    display: flex;
+    flex-direction: row;
+    white-space: nowrap; 
+}
+
+.FixedWidthLeftColumnTable__fixedWidthLeftColumnTableNameTableContainer___303GY {
+    flex: 1 0;
+}
+
+.FixedWidthLeftColumnTable__fixedWidthLeftColumnTableScrollableContainer___1vf0j {
+    display: flex;
+    flex: 1 0;
+    flex-direction: row;
+    overflow-x: auto;
+}
+
+.FixedWidthLeftColumnTable__fixedWidthLeftColumnTableScrollableFadeContainer___Bz4Ny {
+    display: flex;
+    flex: 2 0;
+    flex-direction: row;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.FixedWidthLeftColumnTable__fixedWidthLeftColumnTableScrollableFade___2pza5 {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 4px;
+}
+
+.FixedWidthLeftColumnTable__fixedWidthLeftColumnTableNameHeader___2VaBz {
+    border-right-width: 1px;
+    border-right-style: solid;
+}
+
+.FixedWidthLeftColumnTable__fixedWidthLeftColumnTableNameTable___q0vj3 {
+    width: 100%;
+}
+
+.FixedWidthLeftColumnTable__fixedWidthLeftColumnTableValueTable___321U6 {
+    min-width: 100%;
+    width: inherit;
+}.HeadersView__headers___1UppS {
+    flex: 1 0;
+    padding: 0.4rem 0rem 0rem 0rem;
+    overflow-y: hidden;
+}
+.CookiesView__icon___5ogyy {
+    width: 1rem;
+    margin-right: 0.25rem;
+}
+
+.CookiesView__iconCookieTrue___295Gw {
+}
+
+.CookiesView__iconCookieFalse___3QPGJ {
+}.BodyView__body___3gwfM {
+}
+
+.BodyView__metadata___F6gZG {
+    padding-left: 0.5rem;
+    padding-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.BodyView__metadataSpacer___nRl5T {
+    margin-left: 1rem;
+    padding-right: 1rem;
+    height: 2rem;
+}
+
+.BodyView__message___1x8Be {
+    padding-left: 0.5rem;
+}
+.InformationLabel__message___2kkkx {
+    padding-bottom: 0.5rem;
+    display: flex;
+}
+
+.InformationLabel__messageIcon___1MokF {
+    height: 1rem;
+    width: 1rem;
+    margin-top: 0.1rem;
+    margin-right: 0.25rem;
+    flex: none;
+}.Request__view___1bf5d {
+    overflow-y: auto;
+    padding-right: 5px;
+}.RequestMiddleware__middleware___1g43P {
+    flex: none;
+}
+
+.RequestMiddleware__middlewareTitle___2nkM- {
+    align-items: baseline;
+    display: flex;
+    flex-direction: row;
+}
+
+.RequestMiddleware__middlewareLegend___2NSfi {
+    display: flex;
+    flex-direction: row;
+    margin-left: 1.5rem;
+}
+
+.RequestMiddleware__middlewareLegendItem___I1Nwc {
+    display: flex;
+    flex-direction: row;
+    margin-right: 1rem;
+}
+
+.RequestMiddleware__middlewareModifiedHeader___22U-s {
+    /* Note: We add margin to align header with request/response icon in body. */
+    margin-left: 1.2rem;
+}
+
+.RequestMiddleware__middlewareBody___nwb5O {
+    vertical-align: top;
+}
+
+.RequestMiddleware__middlewareIndent___1Tzh1 {
+    margin-left: 1.5rem;
+}
+
+.RequestMiddleware__middlewareList___2hbij {
+    align-items: baseline;
+    display: flex;
+    flex-direction: column;
+}
+
+.RequestMiddleware__middlewareModifiedItem___3r1LC, .RequestMiddleware__middlewareOperation___WNDow {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.RequestMiddleware__middlewareOperation___WNDow + .RequestMiddleware__middlewareOperation___WNDow,
+.RequestMiddleware__middlewareModifiedItem___3r1LC + .RequestMiddleware__middlewareModifiedItem___3r1LC  {
+    margin-top: 0.75rem;
+}
+
+.RequestMiddleware__middlewareIcon___zxsGk {
+    flex: none;
+    height: 1rem;
+    margin-right: 0.2rem;
+    width: 1rem;
+}
+
+.RequestMiddleware__middlewareStatusCode___sBygu {
+    /* Account for icon margins in aligning StatusLabel with plain text. */
+    margin-left: -0.25rem;
+}
+
+.RequestMiddleware__middlewareRequestIcon___Fic3s {
+}
+
+.RequestMiddleware__middlewareResponseIcon___3kupI {
+}
+
+.RequestMiddleware__middlewareOperationType___Uza3O {
+}
+
+.RequestMiddleware__middlewareDurationColumn___3Ov3l {
+    text-align: right;
+}
+
+.RequestMiddleware__middlewareNameAnonymous___2zluq {
+}
+.RequestResource__requestResource___rSgTE {
+    display: flex;
+    flex-direction: row;
+}
+
+.RequestResource__requestResourceTableContainer___3M0BP {
+    flex: 1;
+}
+.RequestResourceTable__requestResourceTableValueColumn___Awlzn {
+    text-align: right;
+}
+
+.RequestResourceTable__requestResourceTableType___3Kruk {
+    align-items: baseline;
+    display: flex;
+    flex-direction: row;
+    white-space: nowrap;
+}
+
+.RequestResourceTable__requestResourceTableTypeName___1O2Rp {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.RequestResourceTable__requestResourceTableTypeIndicator___3UlW8 {
+    flex: none;
+    height: 0.5rem;
+    margin-right: 0.4rem;
+    width: 0.5rem;
+}
+
+.RequestResourceTable__requestResourceTablePercentage___18e3W {
+}
+
+.RequestResourceTable__requestResourceTableTotalCell___3vsUm{
+    border-top-style: solid;
+    border-top-width: 2px;
+}
+
+.RequestResourceTable__requestResourceTableColor1___pgfd8 {
+}
+
+.RequestResourceTable__requestResourceTableColor2___2EjnU {
+}
+
+.RequestResourceTable__requestResourceTableColor3___2_5Qt {
+}
+
+.RequestResourceTable__requestResourceTableColor4___eBo2n {
+}
+
+.RequestResourceTable__requestResourceTableColor5___3WWFb {
+}
+
+.RequestResourceTable__requestResourceTableColor6___ABqc1 {
+}
+
+.RequestResourceTable__requestResourceTableColor7___1zEV8 {
+}
+.RequestResponseTabStrip__strip___12nUS {
+    display: flex;
+}
+
+.RequestResponseTabStrip__stripContainer___1yjz4 {
+    width: 100%;
+    border-spacing: 0px;
+    border-collapse: separate;
+    table-layout: fixed;
+}
+
+.RequestResponseTabStrip__stripItem___1zNJp {
+    width: 50%;
+    overflow-x: hidden;
+    vertical-align: top;
+    position: relative;
+}
+
+.RequestResponseTabStrip__stripItemModal___2AQth {
+    display: none;
+}
+
+.RequestResponseTabStrip__stripItemModal___2AQth button {
+    position: absolute;
+    right: 0.25rem;
+    top: 0.75rem;
+}
+
+.RequestResponseTabStrip__stripItemLeft___bkEF4 .RequestResponseTabStrip__stripItemModal___2AQth button {
+    right: 1.5rem;
+}
+
+.RequestResponseTabStrip__stripItem___1zNJp:hover .RequestResponseTabStrip__stripItemModal___2AQth {
+    display: block;
+}
+
+.RequestResponseTabStrip__stripItemLeft___bkEF4 {
+    padding-right: 1.5rem;
+}
+.RequestResponseTabStrip__stripItemRight___Kj7xF {
+    padding-left: 1.5rem;
+}
+
+.RequestResponseTabStrip__stripItemContent___1nDKI {
+    overflow-x: hidden;
+}
+
+.RequestResponseTabStrip__stripItemContent___1nDKI:hover {
+    overflow-x: auto;
+    overflow-x: overlay;
+}.RequestResponseTabStripModal__expand___1yRqS {
+}
+
+.RequestResponseTabStripModal__expandIcon___1fe5W {
+    height: 1rem;
+    width: 1rem;
+    vertical-align: bottom;
+    margin-right: 0.5rem;
+}
+
+.RequestResponseTabStripModal__title___14DNw {
+    margin-top: 0;
+    padding-right: 1rem;
+    margin-right: 1rem;
+}
+
+.RequestResponseTabStripModal__titleHolder___380K0 {
+    display: flex;
+}
+
+.RequestResponseTabStripModal__titleUrlHolder___1mhOw {
+    padding-top: 0.5rem;
+}
+.ServiceView__service___2ZGaa {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 0;
+}
+
+.ServiceView__serviceMaster___3U6YP {
+    display: flex;
+    flex: auto;
+    flex-direction: column;
+    overflow-y: hidden;
+}
+
+.ServiceView__serviceMaster___3U6YP:hover {
+    overflow-y: auto;
+    overflow-y: overlay;
+}
+
+.ServiceView__serviceListing___1TIEt {
+    display: flex;
+    flex: none;
+}
+
+.ServiceView__serviceDetail___3Z4dE {
+    display: flex;
+    flex: none;
+    flex-direction: column;
+    height: 33%;
+    min-height: 10rem;
+    margin: 0rem -2rem -0.5rem -1rem;
+}
+
+.ServiceView__serviceDuration___VxP0I {
+    font-size: 60%;
+    padding-left: 1rem;
+}
+
+.ServiceView__serviceTotalDuration___2aP5V {
+    border-left: 1px solid #46464A;
+    text-align: right;
+    font-size: 80%;
+}
+
+.ServiceView__serviceTimelineBorder____MwcX {
+    border-left: 1px solid #46464A;
+}
+.ExpansionBar__expansionBar___1MJFU {
+    width: 100%;
+    text-align: left;
+    padding-left: 1.75rem;
+    border: none;
+    border-top-width: 1px;
+    border-top-style: solid;
+    position: relative;
+    cursor: pointer;
+    height: 1.75rem;
+}
+
+.ExpansionBar__expansionBar___1MJFU:hover {
+}
+
+.ExpansionBar__expansionBar___1MJFU:active {
+}
+
+.ExpansionBar__expansionBar___1MJFU:focus {
+    outline: 0;
+}
+
+.ExpansionBar__expansionBarIcon___1hNdz {
+    height: 1.5rem;
+    width: 1.5rem;
+    margin: 0 0.25rem;
+}
+
+.ServiceBarChart__serviceBarChart___3LYEB {
+    background-color: transparent;
+    vertical-align: middle;
+}
+
+.ServiceBarChart__serviceBarChartTable___8mOT_ {
+    border-spacing: 0;
+    width: 100%;
+}
+
+.ServiceBarChart__serviceBarChartTableRow___3rJKE {
+    width: 100%;
+    height: 1rem;
+}
+
+.ServiceBarChart__serviceBarChartText___12SUw {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+    font-size: 80%;
+}
+
+.ServiceBarChart__serviceBarChartTextContainer___6bxRb {
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 1px;
+}.ServiceDetailsView__details___3U8wY {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.ServiceDetailsView__detailTabTitles___jrnKF {
+    padding-left: 1.5rem;
+    padding-top: 0.5rem;
+}
+
+.ServiceDetailsView__detailTabContent___3frtF {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.ServiceDetailsView__detailTabContent___3frtF:hover {
+    overflow-x: auto;
+    overflow-x: overlay;
+    overflow-y: auto;
+    overflow-y: overlay;
+}
+.DebugView__view___pPm7Y {
+    overflow-y: hidden;
+}
+
+.DebugView__view___pPm7Y:hover {
+    overflow-y: auto;
+    overflow-y: overlay;
+}
+
+.DebugView__messagesBody___2AKjh {
+    vertical-align: top;
+}
+
+.DebugView__payloadColumn___X3v8p pre > code {
+    overflow-x: auto;
+}
+
+.DebugView__codeBlock___2OrxH pre > code {
+    overflow: auto;
+    height: 200px;
+    width: 95%;
+}.dark button {color: #f1f1f1; } .dark ::-webkit-scrollbar-thumb {background: rgba(70, 70, 70, 0.5); } .dark .ShellView__shellContent___vo90n {background-color: #1b1b1c; color: #f1f1f1; } .dark .ShellView__shellContentActivityBar___hrU73 {background-color: #2d2d30; } .dark .ShellActivityBarView__activityBarButton___2v3pv {color: #848484; } .dark .ShellActivityBarView__activityBarButton___2v3pv:hover {color: #f1f1f1; } .dark .ShellActivityBarView__activityBarButton___2v3pv:active {border-color: #0e6198; } .dark .ShellActivityBarView__activityBarButtonActive___1ysdE {color: #f1f1f1; } .dark .ShellStatusBarView__statusBar___d0l8w {background-color: #007acc; color: #f1f1f1; } .dark .ShellStatusBarView__statusBarButton___36JYf:hover {background-color: #278bcf; } .dark .Common__table___3VuJF > thead > tr > th + th {border-left-color: #46464A; } .dark .Common__table___3VuJF > tbody > tr:nth-child(even) {background-color: #212123; } .dark .Common__table___3VuJF > tbody > tr.Common__tableSelectableRow___1M8AJ:hover {background-color: #3f3f46; } .dark .Common__table___3VuJF > tbody > tr.Common__tableSelectedRow___2_thp.Common__tableSelectableRow___1M8AJ {background-color: #0e6198; } .dark .Common__table___3VuJF > tbody > tr > td.Common__tableNoData___1Ybo- {color: #999999; } .dark .Common__table___3VuJF .Common__tableHeadSpacer___3blY1 {border-bottom-color: #46464A; } .dark .Common__noData___24Ofu {color: #999999; } .dark .Common__paramValue___hBbfe {color: #aaaaaa; } .dark .Common__paramOverwritten___3hFN0 {color: #aaaaaa; text-decoration-color: #0e6198; -moz-text-decoration-color: #0e6198; -webkit-text-decoration-color: #0e6198; } .dark .Common__modal___d4R-Y {border: 1px solid #515152; background: #1b1b1c; color: #f1f1f1; } .dark .SideBar__sideBar___2UI2S {background-color: #252526; border-right-color: #46464a; } .dark .SideBarSection__sideBarTitleHolder___2Tbjp {background-color: #2d2d30; border-top-color: #46464a; } .dark .SideBarSection__sideBarTitleIsImportant___w_-zs .SideBarSection__sideBarTitle___pJVSt {border-left-color: #0e6198; } .dark .SideBarSection__sideBarNoRecords___8BDPu {color: #999999; } .dark .RequestsSideBarRequestView__requestButton___3EwbS:hover {background-color: #3f3f46; } .dark .RequestsSideBarRequestView__requestButton___3EwbS.RequestsSideBarRequestView__requestButtonActive___20llT {background-color: #0e6198; } .dark .RequestsSideBarRequestView__requestSummaryLine___2EClN {color: #f1f1f1; } .dark .RequestsSideBarRequestView__requestDetailLine___2XTl3 {color: #999999; } .dark svg.RequestsSideBarRequestView__requestClientIcon___2xIKF {color: #999999; } .dark .RequestsSideBarRequestView__requestButton___3EwbS.RequestsSideBarRequestView__requestButtonActive___20llT .RequestsSideBarRequestView__requestSummaryLine___2EClN, .dark .RequestsSideBarRequestView__requestButton___3EwbS.RequestsSideBarRequestView__requestButtonActive___20llT .RequestsSideBarRequestView__requestDetailLine___2XTl3, .dark .RequestsSideBarRequestView__requestButton___3EwbS.RequestsSideBarRequestView__requestButtonActive___20llT svg.RequestsSideBarRequestView__requestClientIcon___2xIKF {color: #ffffff; } .dark .UrlText__urlProtocolHttpsColor___1iwZP {color: #71B252; } .dark .ClientLabel__clientLabelIcon___1bPcZ {color: #f1f1f1; } .dark .RequestsDetailsView__detailTitle___2ZX0b {border-bottom-color: #46464A; } .dark .TabStrip__stripButton___2pizC:hover {color: #3399ff; } .dark .TabStrip__stripButtonActive___1O88B {color: #3399ff; } .dark .TabStrip__stripPlain___3JjMv .TabStrip__stripButtonActive___1O88B {border-bottom-color: #3399ff; } .dark .TabStrip__stripTabs___16pyx {border-bottom-color: #46464A; } .dark .TabStrip__stripTabs___16pyx .TabStrip__stripButtonActive___1O88B {background-color: #1b1b1c; border-top-color: #46464A; border-right-color: #46464A; border-left-color: #46464A; } .dark .RequestsDetailsOverviewView__overview___1s-8L {border-color: #46464A; } .dark .RequestsDetailsOverviewView__overviewDetailTitle___1czqF {color: #999999; } .dark .ExpandCollapseButton__expandCollapseButtonIcon___12o5i {color: #f1f1f1; } .dark .Logging__logViewExpandCollapseAll___2KOc- {border-left-color: #46464A; } .dark .Logging__logNoMessages___2M5NZ {color: #999999; } .dark .Logging__logContent___sabR- a {color: #3399ff; } .dark .Logging__logContent___sabR- a:active {color: #007acc; } .dark .Logging__logTimeSpanIconPath___108a4 {fill: #999999; } .dark .Logging__logGroup___1TV7j.Logging__logGroupLine___1BRe6:before {border-left-color: #f1f1f1; } .dark .AgentIcon__iconPathClient___3a-DF {fill: #79d7f2; } .dark .AgentIcon__iconPathServer___3FuE5 {fill: #903f8b; } .dark .ExpandCollapseAllBar__expandCollapseAllIconPath___3_Lkq {fill: #f1f1f1; } .dark .JsonTable__jsonTableFaderEven___2daXG {background-image: linear-gradient(to bottom, transparent, #212123 40%); } .dark .JsonTable__jsonTableFaderOdd___1w2yC {background-image: linear-gradient(to bottom, transparent, #1b1b1c 40%); } .dark .JsonTable__jsonTable___2veE9 > thead {border-bottom-color: #46464A; } .dark .JsonTable__jsonTableHeaderCount___3Fqv1 {color: #999999; } .dark .LoggingLabel__loggingLabelUnnamed___1gjW8 {color: #999999; } .dark .token {border-color: #808080; } .dark .token.tokenString {color: #cd917a; } .dark .token.tokenInteger {color: #b6cda9; } .dark .LoggingTimeSpan__logTimeSpanDuration___2YBv8 {border-left-color: #46464A; border-right-color: #46464A; } .dark .FilterBar__filterGroup___2GLr4 {border-left-color: #46464A; } .dark .FilterBar__filterShowAll___rIBiy, .dark .FilterBar__filterShowAll___rIBiy:hover, .dark .FilterBar__filterShowAll___rIBiy:active {color: #3399ff; } .dark .FilterBar__filterShowAll___rIBiy:active {color: #007acc; } .dark .FilterButton__filterButton___1waRX, .dark .FilterButton__filterButtonShown___dM8it, .dark .FilterButton__filterButtonNotShown___kr-em {color: #f1f1f1; } .dark .FilterButton__filterButtonShown___dM8it {border-color: #3399FF; } .dark .FilterButton__filterButtonShown___dM8it:hover {border-color: #137CC9; background-color: #3F3F46; } .dark .FilterButton__filterButtonNotShown___kr-em:hover {background-color: #3F3F46; } .dark .FilterButton__filterButtonNotShown___kr-em:active {background-color: #007acc; } .dark .LoggingFilterBar__agentBrowserIcon___32h-c {fill: #79d7f2; } .dark .LoggingFilterBar__agentServerIcon___3TNK2 {fill: #903f8b; } .dark .DetailBiPanel__detail___24y3T {border-top-color: #0e6198; } .dark .DetailBiPanel__detailMargin___2KlbB {background-color: #46464A; } .dark .DetailBiPanel__detailPanelTitle___FHOIq {background-color: #2d2d30; color: #f1f1f1; } .dark .CodeView__codeView___QXLAq > pre > code {color: #f1f1f1; } .dark .FixedWidthLeftColumnTable__fixedWidthLeftColumnTableScrollableFade___2pza5 {background-image: linear-gradient(to left, transparent, #1b1b1c 90%); } .dark .FixedWidthLeftColumnTable__fixedWidthLeftColumnTableNameHeader___2VaBz {border-right-color: #46464A; } .dark .CookiesView__iconCookieTrue___295Gw {fill: #71b252; } .dark .CookiesView__iconCookieFalse___3QPGJ {fill: #b03b00; } .dark .BodyView__metadataSpacer___nRl5T {border-left: 1px solid #46464a; } .dark .InformationLabel__message___2kkkx {color: #999999; } .dark .InformationLabel__messageIcon___1MokF {color: #3399ff; } .dark .RequestMiddleware__middlewareRequestIcon___Fic3s {color: #ff7bac; } .dark .RequestMiddleware__middlewareResponseIcon___3kupI {color: #deaf8f; } .dark .RequestMiddleware__middlewareOperationType___Uza3O {color: #999999; } .dark .RequestMiddleware__middlewareNameAnonymous___2zluq {color: #999999; } .dark .RequestResourceTable__requestResourceTablePercentage___18e3W {color: #999999; } .dark .RequestResourceTable__requestResourceTableTotalCell___3vsUm {border-top-color: #46464A; } .dark .RequestResourceTable__requestResourceTableColor1___pgfd8 {background-color: #71B252; } .dark .RequestResourceTable__requestResourceTableColor2___2EjnU {background-color: #BF3F00; } .dark .RequestResourceTable__requestResourceTableColor3___2_5Qt {background-color: #FCB714; } .dark .RequestResourceTable__requestResourceTableColor4___eBo2n {background-color: #903F8B; } .dark .RequestResourceTable__requestResourceTableColor5___3WWFb {background-color: #117AD1; } .dark .RequestResourceTable__requestResourceTableColor6___ABqc1 {background-color: #79D7F2; } .dark .RequestResourceTable__requestResourceTableColor7___1zEV8 {background-color: #B5B5B5; } .dark .RequestResponseTabStrip__stripContainer___1yjz4 {border-bottom: 1px solid #515152; } .dark .RequestResponseTabStrip__stripItemLeft___bkEF4 {border-right: 1px solid #515152; } .dark .RequestResponseTabStripModal__title___14DNw {border-right: 1px solid #46464a; } .dark .ServiceView__serviceDuration___VxP0I {color: #999999; } .dark .ExpansionBar__expansionBar___1MJFU {color: #f1f1f1; background-color: #2d2d30; border-top-color: #46464a; } .dark .ExpansionBar__expansionBar___1MJFU:hover {background-color: #3f3f46; } .dark .ExpansionBar__expansionBar___1MJFU:active {background-color: #007acc; } .dark .ServiceBarChart__serviceBarChart___3LYEB {color: #f1f1f1; } .light button {color: #1e1e1e; } .light ::-webkit-scrollbar-thumb {background: rgba(206, 206, 206, 0.5); } .light .ShellView__shellContent___vo90n {background-color: #ffffff; color: #1e1e1e; } .light .ShellView__shellContentActivityBar___hrU73 {background-color: #cecece; } .light .ShellActivityBarView__activityBarButton___2v3pv {color: #848484; } .light .ShellActivityBarView__activityBarButton___2v3pv:hover {color: #1e1e1e; } .light .ShellActivityBarView__activityBarButton___2v3pv:active {border-color: #3399ff; } .light .ShellActivityBarView__activityBarButtonActive___1ysdE {color: #1e1e1e; } .light .ShellStatusBarView__statusBar___d0l8w {background-color: #007acc; color: #f1f1f1; } .light .ShellStatusBarView__statusBarButton___36JYf:hover {background-color: #278bcf; } .light .Common__table___3VuJF > thead > tr > th + th {border-left-color: #e0e0e0; } .light .Common__table___3VuJF > tbody > tr:nth-child(even) {background-color: #f4f4f4; } .light .Common__table___3VuJF > tbody > tr.Common__tableSelectableRow___1M8AJ:hover {background-color: #eaf0ff; } .light .Common__table___3VuJF > tbody > tr.Common__tableSelectedRow___2_thp.Common__tableSelectableRow___1M8AJ {background-color: #3399ff; } .light .Common__table___3VuJF > tbody > tr > td.Common__tableNoData___1Ybo- {color: #6d6d6d; } .light .Common__table___3VuJF .Common__tableHeadSpacer___3blY1 {border-bottom-color: #e0e0e0; } .light .Common__noData___24Ofu {color: #6d6d6d; } .light .Common__paramValue___hBbfe {color: #1e1e1e; } .light .Common__paramOverwritten___3hFN0 {color: #1e1e1e; text-decoration-color: #3399ff; -moz-text-decoration-color: #3399ff; -webkit-text-decoration-color: #3399ff; } .light .Common__modal___d4R-Y {border: 1px solid #515152; background: #ffffff; color: #1e1e1e; } .light .SideBar__sideBar___2UI2S {background-color: #f4f4f4; border-right-color: #e0e0e0; } .light .SideBarSection__sideBarTitleHolder___2Tbjp {background-color: #cecece; border-top-color: #e0e0e0; } .light .SideBarSection__sideBarTitleIsImportant___w_-zs .SideBarSection__sideBarTitle___pJVSt {border-left-color: #3399ff; } .light .SideBarSection__sideBarNoRecords___8BDPu {color: #6d6d6d; } .light .RequestsSideBarRequestView__requestButton___3EwbS:hover {background-color: #eaf0ff; } .light .RequestsSideBarRequestView__requestButton___3EwbS.RequestsSideBarRequestView__requestButtonActive___20llT {background-color: #3399ff; } .light .RequestsSideBarRequestView__requestSummaryLine___2EClN {color: #1e1e1e; } .light .RequestsSideBarRequestView__requestDetailLine___2XTl3 {color: #6d6d6d; } .light svg.RequestsSideBarRequestView__requestClientIcon___2xIKF {color: #6d6d6d; } .light .RequestsSideBarRequestView__requestButton___3EwbS.RequestsSideBarRequestView__requestButtonActive___20llT .RequestsSideBarRequestView__requestSummaryLine___2EClN, .light .RequestsSideBarRequestView__requestButton___3EwbS.RequestsSideBarRequestView__requestButtonActive___20llT .RequestsSideBarRequestView__requestDetailLine___2XTl3, .light .RequestsSideBarRequestView__requestButton___3EwbS.RequestsSideBarRequestView__requestButtonActive___20llT svg.RequestsSideBarRequestView__requestClientIcon___2xIKF {color: #ffffff; } .light .UrlText__urlProtocolHttpsColor___1iwZP {color: #1a7f17; } .light .ClientLabel__clientLabelIcon___1bPcZ {color: #1e1e1e; } .light .RequestsDetailsView__detailTitle___2ZX0b {border-bottom-color: #e0e0e0; } .light .TabStrip__stripButton___2pizC:hover {color: #0e70c0; } .light .TabStrip__stripButtonActive___1O88B {color: #0e70c0; } .light .TabStrip__stripPlain___3JjMv .TabStrip__stripButtonActive___1O88B {border-bottom-color: #0e70c0; } .light .TabStrip__stripTabs___16pyx {border-bottom-color: #0e70c0; } .light .TabStrip__stripTabs___16pyx .TabStrip__stripButtonActive___1O88B {background-color: #ffffff; border-top-color: #0e70c0; border-right-color: #0e70c0; border-left-color: #0e70c0; } .light .RequestsDetailsOverviewView__overview___1s-8L {border-color: #e0e0e0; } .light .RequestsDetailsOverviewView__overviewDetailTitle___1czqF {color: #6d6d6d; } .light .ExpandCollapseButton__expandCollapseButtonIcon___12o5i {color: #1e1e1e; } .light .Logging__logViewExpandCollapseAll___2KOc- {border-left-color: #e0e0e0; } .light .Logging__logNoMessages___2M5NZ {color: #6d6d6d; } .light .Logging__logContent___sabR- a {color: #0e70c0; } .light .Logging__logContent___sabR- a:active {color: #dce0ec; } .light .Logging__logTimeSpanIconPath___108a4 {fill: #6d6d6d; } .light .Logging__logGroup___1TV7j.Logging__logGroupLine___1BRe6:before {border-left-color: #1e1e1e; } .light .AgentIcon__iconPathClient___3a-DF {fill: #79d7f2; } .light .AgentIcon__iconPathServer___3FuE5 {fill: #903f8b; } .light .ExpandCollapseAllBar__expandCollapseAllIconPath___3_Lkq {fill: #1e1e1e; } .light .JsonTable__jsonTableFaderEven___2daXG {background-image: linear-gradient(to bottom, transparent, #f4f4f4 40%); } .light .JsonTable__jsonTableFaderOdd___1w2yC {background-image: linear-gradient(to bottom, transparent, #ffffff 40%); } .light .JsonTable__jsonTable___2veE9 > thead {border-bottom-color: #e0e0e0; } .light .JsonTable__jsonTableHeaderCount___3Fqv1 {color: #6d6d6d; } .light .LoggingLabel__loggingLabelUnnamed___1gjW8 {color: #6d6d6d; } .light .token {border-color: #808080; } .light .token.tokenString {color: #B84803; } .light .token.tokenInteger {color: #198844; } .light .LoggingTimeSpan__logTimeSpanDuration___2YBv8 {border-left-color: #e0e0e0; border-right-color: #e0e0e0; } .light .FilterBar__filterGroup___2GLr4 {border-left-color: #e0e0e0; } .light .FilterBar__filterShowAll___rIBiy, .light .FilterBar__filterShowAll___rIBiy:hover, .light .FilterBar__filterShowAll___rIBiy:active {color: #0e70c0; } .light .FilterBar__filterShowAll___rIBiy:active {color: #dce0ec; } .light .FilterButton__filterButton___1waRX, .light .FilterButton__filterButtonShown___dM8it, .light .FilterButton__filterButtonNotShown___kr-em {color: #1e1e1e; } .light .FilterButton__filterButtonShown___dM8it {border-color: #3399FF; } .light .FilterButton__filterButtonShown___dM8it:hover {border-color: #137CC9; background-color: #eaf0ff; } .light .FilterButton__filterButtonNotShown___kr-em:hover {background-color: #eaf0ff; } .light .FilterButton__filterButtonNotShown___kr-em:active {background-color: #007acc; } .light .LoggingFilterBar__agentBrowserIcon___32h-c {fill: #79d7f2; } .light .LoggingFilterBar__agentServerIcon___3TNK2 {fill: #903f8b; } .light .DetailBiPanel__detail___24y3T {border-top-color: #3399ff; } .light .DetailBiPanel__detailMargin___2KlbB {background-color: #e0e0e0; } .light .DetailBiPanel__detailPanelTitle___FHOIq {background-color: #848484; color: #1e1e1e; } .light .CodeView__codeView___QXLAq > pre > code {color: #1e1e1e; } .light .FixedWidthLeftColumnTable__fixedWidthLeftColumnTableScrollableFade___2pza5 {background-image: linear-gradient(to left, transparent, #ffffff 90%); } .light .FixedWidthLeftColumnTable__fixedWidthLeftColumnTableNameHeader___2VaBz {border-right-color: #e0e0e0; } .light .CookiesView__iconCookieTrue___295Gw {fill: #71b252; } .light .CookiesView__iconCookieFalse___3QPGJ {fill: #b03b00; } .light .BodyView__metadataSpacer___nRl5T {border-left: 1px solid #e0e0e0; } .light .InformationLabel__message___2kkkx {color: #6d6d6d; } .light .InformationLabel__messageIcon___1MokF {color: #0e70c0; } .light .RequestMiddleware__middlewareRequestIcon___Fic3s {color: #ff7bac; } .light .RequestMiddleware__middlewareResponseIcon___3kupI {color: #deaf8f; } .light .RequestMiddleware__middlewareOperationType___Uza3O {color: #6d6d6d; } .light .RequestMiddleware__middlewareNameAnonymous___2zluq {color: #6d6d6d; } .light .RequestResourceTable__requestResourceTablePercentage___18e3W {color: #6d6d6d; } .light .RequestResourceTable__requestResourceTableTotalCell___3vsUm {border-top-color: #e0e0e0; } .light .RequestResourceTable__requestResourceTableColor1___pgfd8 {background-color: #71B252; } .light .RequestResourceTable__requestResourceTableColor2___2EjnU {background-color: #BF3F00; } .light .RequestResourceTable__requestResourceTableColor3___2_5Qt {background-color: #FCB714; } .light .RequestResourceTable__requestResourceTableColor4___eBo2n {background-color: #903F8B; } .light .RequestResourceTable__requestResourceTableColor5___3WWFb {background-color: #117AD1; } .light .RequestResourceTable__requestResourceTableColor6___ABqc1 {background-color: #79D7F2; } .light .RequestResourceTable__requestResourceTableColor7___1zEV8 {background-color: #B5B5B5; } .light .RequestResponseTabStrip__stripContainer___1yjz4 {border-bottom: 1px solid #515152; } .light .RequestResponseTabStrip__stripItemLeft___bkEF4 {border-right: 1px solid #515152; } .light .RequestResponseTabStripModal__title___14DNw {border-right: 1px solid #e0e0e0; } .light .ServiceView__serviceDuration___VxP0I {color: #6d6d6d; } .light .ExpansionBar__expansionBar___1MJFU {color: #1e1e1e; background-color: #848484; border-top-color: #e0e0e0; } .light .ExpansionBar__expansionBar___1MJFU:hover {background-color: #eaf0ff; } .light .ExpansionBar__expansionBar___1MJFU:active {background-color: #007acc; } .light .ServiceBarChart__serviceBarChart___3LYEB {color: #1e1e1e; } 

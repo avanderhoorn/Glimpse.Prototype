@@ -25,6 +25,7 @@ namespace Glimpse.Server.Configuration
             var httpMessageTemplate = new UriTemplate(resources.GetValueOrDefault("message-ingress", string.Empty), true);
             var hudScriptTemplate = new UriTemplate(resources.GetValueOrDefault("hud", string.Empty), true);
             var contextTemplate = new UriTemplate(resources.GetValueOrDefault("context", string.Empty), true);
+            var contextSummaryTemplate = new UriTemplate(resources.GetValueOrDefault("context-summary", string.Empty), true);
             var metadataTemplate = new UriTemplate(resources.GetValueOrDefault("metadata", string.Empty), true);
             var clientScriptTemplate = new UriTemplate(resources.GetValueOrDefault("client", string.Empty), true);
 
@@ -34,6 +35,7 @@ namespace Glimpse.Server.Configuration
                 MessageIngressTemplate = httpMessageTemplate.ResolveWith(supportedParameters),
                 HudScriptTemplate = hudScriptTemplate.ResolveWith(supportedParameters),
                 ContextTemplate = contextTemplate.ResolveWith(supportedParameters),
+                ContextSummaryTemplate = contextSummaryTemplate.ResolveWith(supportedParameters),
                 MetadataTemplate = metadataTemplate.ResolveWith(supportedParameters),
                 ClientScriptTemplate = clientScriptTemplate.ResolveWith(supportedParameters)
             };

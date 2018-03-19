@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using Glimpse.Internal;
-using Newtonsoft.Json;
 
 namespace Glimpse
 {
@@ -19,14 +17,21 @@ namespace Glimpse
 
         public string Payload { get; set; }
 
-        public int Ordinal { get; set; } = 0;
+        public int Ordinal { get; set; }
 
         public MessageContext Context { get; set; }
-        
+
+        public double Offset { get; set; }
+
         public IReadOnlyDictionary<string, object> Indices
         {
             get { return _indices; }
             set { _indices = value; }
+        }
+
+        public MessageAgent Agent
+        {
+            get { return MessageAgent.Default; }
         }
     }
 }

@@ -1,14 +1,16 @@
-<Project Sdk="Microsoft.NET.Sdk.Web" ToolsVersion="15.0">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
   <PropertyGroup>
-    <Description>Music store application on ASP.NET 5</Description>
-    <Authors>Microsoft</Authors>
-    <TargetFrameworks>netcoreapp1.0</TargetFrameworks>
-    <DefineConstants>$(DefineConstants);DEMO;TESTING</DefineConstants>
-    <WarningsAsErrors>true</WarningsAsErrors>
-    <PreserveCompilationContext>true</PreserveCompilationContext>
-    <AssemblyName>MusicStore</AssemblyName>
-    <OutputType>Exe</OutputType>
+    <Description>Music store application on ASP.NET Core</Description>
+    <TargetFrameworks>netcoreapp2.0</TargetFrameworks>
+    <MvcRazorCompileOnPublish>true</MvcRazorCompileOnPublish>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
+  </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\..\src\Glimpse.Agent.AspNet.Mvc\Glimpse.Agent.AspNet.Mvc.csproj" />
     <ProjectReference Include="..\..\src\Glimpse.Server\Glimpse.Server.csproj" />
@@ -19,42 +21,11 @@
       <FromP2P>true</FromP2P>
     </ProjectReference>
   </ItemGroup>
+
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="1.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="1.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="1.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.MicrosoftAccount" Version="1.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="1.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.Twitter" Version="1.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Diagnostics" Version="1.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="1.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="1.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.0.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.TagHelpers" Version="1.0.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Server.IISIntegration" Version="1.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="1.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Server.WebListener" Version="1.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Session" Version="1.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.0.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="1.0.2" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="1.0.2" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="1.0.1" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="1.0.1" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="1.0.1" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="1.0.1" />
-    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="1.0.1" />
+    <Content Update="config.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net451' ">
-    <Reference Include="System" />
-    <Reference Include="Microsoft.CSharp" />
-  </ItemGroup>
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp1.0' ">
-    <PackageReference Include="Microsoft.NETCore.App">
-      <Version>1.0.0</Version>
-    </PackageReference>
-  </ItemGroup>
-  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-    <DefineConstants>$(DefineConstants);RELEASE</DefineConstants>
-  </PropertyGroup>
-  <Target Name="PostpublishScript" AfterTargets="Publish" Condition=" '$(IsCrossTargetingBuild)' != 'true' " />
+
 </Project>

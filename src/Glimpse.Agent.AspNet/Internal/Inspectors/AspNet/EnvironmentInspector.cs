@@ -4,7 +4,7 @@ using Glimpse.Agent.AspNet.Messages;
 using Glimpse.Agent.Inspectors;
 using Microsoft.AspNetCore.Http;
 
-namespace Glimpse.Agent.AspNet.Internal.Inspectors.AspNet
+namespace Glimpse.Agent.Internal.Inspectors
 {
     public class EnvironmentInspector : Inspector
     {
@@ -36,9 +36,7 @@ namespace Glimpse.Agent.AspNet.Internal.Inspectors.AspNet
                     OSArchitecture = RuntimeInformation.OSArchitecture.ToString()
                 };
             }
-
             
-
             _broker.SendMessage(_message);
         }
     }

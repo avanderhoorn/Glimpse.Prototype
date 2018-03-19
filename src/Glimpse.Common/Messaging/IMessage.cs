@@ -13,8 +13,12 @@ namespace Glimpse
 
         int Ordinal { get; }
 
+        double Offset { get; }
+
         MessageContext Context { get; }
         
         IReadOnlyDictionary<string, object> Indices { get; }
+
+        MessageAgent Agent { get; }
     }
 }

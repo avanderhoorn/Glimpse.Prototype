@@ -7,6 +7,8 @@ using Glimpse.Server.Resources;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.AspNetCore.StaticFiles;
+using Glimpse.Server.Internal.Middleware;
+using Microsoft.AspNetCore.StaticFiles.Infrastructure;
 
 namespace Glimpse.Server.Internal.Resources
 {
@@ -20,13 +22,19 @@ namespace Glimpse.Server.Internal.Resources
 
             appBuilder.ModifyResponseWith(res => res.EnableCors());
 
-            appBuilder.UseFileServer(new FileServerOptions
-            {
-                RequestPath = "",
-                EnableDefaultFiles = true,
-                FileProvider =
-                    new EmbeddedFileProvider(typeof (EmbeddedFileResource).GetTypeInfo().Assembly, BaseNamespace)
-            });
+            //appBuilder.UseFileServer(new FileServerOptions
+            //{
+            //    RequestPath = "",
+            //    EnableDefaultFiles = true,
+            //    FileProvider =
+            //        new EmbeddedFileProvider(typeof(EmbeddedFileResource).GetTypeInfo().Assembly, BaseNamespace)
+            //});
+
+            var fileProvider = new EmbeddedFileProvider(typeof(EmbeddedFileResource).GetTypeInfo().Assembly, BaseNamespace);
+
+            appBuilder.UseDefaultEmbeddedFiles(new DefaultFilesOptions() { FileProvider = fileProvider });
+
+            appBuilder.UseStaticFiles(new StaticFileOptions() { FileProvider = fileProvider });
 
             foreach (var registration in Register)
             {
@@ -43,14 +51,16 @@ namespace Glimpse.Server.Internal.Resources
 
     public class ClientEmbeddedFileResource : EmbeddedFileResource
     {
+        public static string BaseUrl = "/glimpse/client";
+
         public override ResourceType Type => ResourceType.Client;
 
         public override string BaseNamespace => "Glimpse.Server.Internal.Resources.Embeded.Client";
 
         public override IDictionary<string, string> Register => new Dictionary<string, string>
         {
-            { "client", "index.html?hash={hash}{&requestId,follow,metadataUri}"},
-            { "hud", "hud.js?hash={hash}" }
+            { "client", "?baseUrl=" + BaseUrl + "&hash={hash}{&requestId,follow,metadataUri}" },
+            { "hud", "main.js?hash={hash}" }
         };
     }
 

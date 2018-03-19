@@ -7,25 +7,25 @@ namespace Glimpse.Agent.Inspectors
 {
     public class DefaultInspectorFunctionManager : IInspectorFunctionManager
     {
-        public DefaultInspectorFunctionManager(IExtensionProvider<IInspectorFunction> inspectorStartupProvider)
+        public DefaultInspectorFunctionManager(IExtensionProvider<IInspectorFunction> inspectorFunctionsProvider)
         {
-            InspectorStartups = inspectorStartupProvider.Instances;
+            InspectorFunctions = inspectorFunctionsProvider.Instances;
         }
 
-        private IEnumerable<IInspectorFunction> InspectorStartups { get; }
+        private IEnumerable<IInspectorFunction> InspectorFunctions { get; }
 
         public RequestDelegate BuildInspectorBranch(RequestDelegate next, IApplicationBuilder app)
         {
-            return BuildInspectorBranch(next, app, InspectorStartups);
+            return BuildInspectorBranch(next, app, InspectorFunctions);
         }
 
-        public RequestDelegate BuildInspectorBranch(RequestDelegate next, IApplicationBuilder app, IEnumerable<IInspectorFunction> inspectorStartups)
+        public RequestDelegate BuildInspectorBranch(RequestDelegate next, IApplicationBuilder app, IEnumerable<IInspectorFunction> inspectorFunctions)
         {
             // create new pipeline
             var branchBuilder = app.New();
-            foreach (var middlewareProfiler in inspectorStartups)
+            foreach (var inspectorFunction in inspectorFunctions)
             {
-                middlewareProfiler.Configure(new InspectorFunctionBuilder(branchBuilder));
+                inspectorFunction.Configure(new InspectorFunctionBuilder(branchBuilder));
             }
             branchBuilder.Use(subNext => { return async ctx => await next(ctx); });
 

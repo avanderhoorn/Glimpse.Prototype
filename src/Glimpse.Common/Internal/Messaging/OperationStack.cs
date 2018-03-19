@@ -12,22 +12,27 @@ namespace Glimpse.Internal
         {
         }
 
-        public void StartOffset()
+        public static void StartOffset()
         {
             StartOffset(DateTime.UtcNow);
         }
-        public void StartOffset(DateTime startTime)
+        public static void StartOffset(DateTime startTime)
         {
             var operationOffset = new OperationOffset(startTime);
             _offsetContext.Value = operationOffset;
         }
 
-        public void PushOperation(object item)
+        public static TimeSpan GetOffset()
+        {
+            return _offsetContext.Value != null ? _offsetContext.Value.Elapsed : TimeSpan.Zero;
+        }
+
+        public static void PushOperation(object item)
         {
             PushOperation(item, DateTime.UtcNow);
         }
 
-        public void PushOperation(object item, DateTime dateTime)
+        public static void PushOperation(object item, DateTime dateTime)
         {
             var offset = _offsetContext.Value?.Elapsed;
             var operation = new Operation(item, dateTime, offset);
@@ -41,7 +46,7 @@ namespace Glimpse.Internal
             _chainContext.Value = next;
         }
 
-        public OperationTiming<T> PopOperation<T>()
+        public static OperationTiming<T> PopOperation<T>()
         {
             var current = _chainContext.Value;
             _chainContext.Value = current?.Next;

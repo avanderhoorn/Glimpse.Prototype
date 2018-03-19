@@ -20,7 +20,7 @@ namespace Glimpse.Agent.Internal.Messaging
 
         private IMessageTypeProcessor TypeProcessor { get; }
 
-        public IMessage ConvertMessage(object payload, MessageContext context, int ordinal)
+        public IMessage ConvertMessage(object payload, MessageContext context, int ordinal, TimeSpan offset)
         {
             var message = new Message
             {
@@ -28,7 +28,8 @@ namespace Glimpse.Agent.Internal.Messaging
                 Ordinal = ordinal,
                 Types = GetTypes(payload),
                 Context = context,
-                Indices = GetIndices(payload)
+                Indices = GetIndices(payload),
+                Offset = offset.TotalMilliseconds
             };
 
             message.Payload = GetPayload(message, payload);

@@ -11,7 +11,7 @@ namespace Glimpse.Server.Internal.Extensions
         public static IEnumerable<string> ParseEnumerable(this IDictionary<string, string> parameters, string name)
         {
             if (parameters.ContainsKey(name) && !string.IsNullOrWhiteSpace(parameters[name]))
-                return parameters[name].Split('|');
+                return parameters[name].Split(',');
 
             return Enumerable.Empty<string>();
         }

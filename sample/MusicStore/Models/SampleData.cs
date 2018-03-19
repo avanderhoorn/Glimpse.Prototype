@@ -19,16 +19,17 @@ namespace MusicStore.Models
 
         public static async Task InitializeMusicStoreDatabaseAsync(IServiceProvider serviceProvider, bool createUsers = true)
         {
-            using (var serviceScope = serviceProvider.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            using (var serviceScope = serviceProvider.CreateScope())
             {
-                var db = serviceScope.ServiceProvider.GetService<MusicStoreContext>();
+                var scopeServiceProvider = serviceScope.ServiceProvider;
+                var db = scopeServiceProvider.GetService<MusicStoreContext>();
 
                 if (await db.Database.EnsureCreatedAsync())
                 {
-                    await InsertTestData(serviceProvider);
+                    await InsertTestData(scopeServiceProvider);
                     if (createUsers)
                     {
-                        await CreateAdminUser(serviceProvider);
+                        await CreateAdminUser(scopeServiceProvider);
                     }
                 }
             }
@@ -105,7 +106,7 @@ namespace MusicStore.Models
                 await userManager.AddClaimAsync(user, new Claim("ManageStore", "Allowed"));
             }
 
-#if TESTING
+            // NOTE: For end to end testing only
             var envPerfLab = configuration["PERF_LAB"];
             if (envPerfLab == "true")
             {
@@ -119,7 +120,6 @@ namespace MusicStore.Models
                     }
                 }
             }
-#endif
         }
 
         private static Album[] GetAlbums(string imgUrl, Dictionary<string, Genre> genres, Dictionary<string, Artist> artists)
